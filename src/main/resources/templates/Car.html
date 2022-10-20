@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Rental car</title>
+</head>
+<style>
+    TABLE {
+        border-collapse: collapse; /* Убираем двойные линии между ячейками */
+        width: 1000px; /* Ширина таблицы */
+    }
+    TH, TD {
+        border: 3px solid black; /* Параметры рамки */
+        text-align: center; /* Выравнивание по центру */
+        padding: 4px; /* Поля вокруг текста */
+    }
+    TH {
+        background: #fc0; /* Цвет фона ячейки */
+        height: 40px; /* Высота ячеек */
+        vertical-align: bottom; /* Выравнивание по нижнему краю */
+        padding: 0; /* Убираем поля вокруг текста */
+    }
+    div {
+        clear: both;
+        padding: 8px 0;
+        overflow: hidden;
+    }
+
+    form {
+        padding: 20px;
+        font-family: Arial;
+        font-size: 13px;
+        display: inline-block;
+        background-color: #37393c;
+        color: white;
+    }
+
+    label {
+        padding-top: 6px;
+        line-height: 18px;
+        float: left;
+        color: #b6daff;
+        margin-right: 7px;
+        width: 120px;
+    }
+
+    input,select,textarea {
+        display: inline-block;
+        width: 250px;
+        height: 18px;
+        padding: 4px;
+        line-height: 18px;
+        color: #efefef;
+        border: 1px solid #a4a4a4;
+        background-color: #202223;
+        -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+        -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+        -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+        -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+        transition: border linear 0.2s, box-shadow linear 0.2s;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+    input:focus,select:focus,textarea:focus {
+        border: 1px solid #97b7d9;
+        outline: none;
+        -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 8px rgba(151, 183, 217, 0.6);
+        -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 8px rgba(151, 183, 217, 0.6);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 8px rgba(151, 183, 217, 0.6);
+    }
+
+    select {
+        width: 200px;
+        height: auto;
+    }
+
+    textarea {
+        height: auto;
+    }
+
+    button {
+        display: inline-block;
+        width: auto;
+        height: auto;
+        background-color: #3d6182;
+        background-repeat: repeat-x;
+        background-image: -moz-linear-gradient(top, #8db7dd, #3d6182);
+        background-image: -ms-linear-gradient(top, #8db7dd, #3d6182);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #8db7dd), color-stop(100%, #3d6182));
+        background-image: -webkit-linear-gradient(top, #8db7dd, #3d6182);
+        background-image: -o-linear-gradient(top, #8db7dd, #3d6182);
+        background-image: linear-gradient(top, #8db7dd, #3d6182);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8db7dd', endColorstr='#3d6182', GradientType=0);
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        border: 1px solid #19252f;
+        padding: 8px 17px 9px;
+        color: white;
+        cursor: pointer;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -webkit-transition: 0.1s linear all;
+        -moz-transition: 0.1s linear all;
+        -ms-transition: 0.1s linear all;
+        -o-transition: 0.1s linear all;
+        transition: 0.1s linear all;
+    }
+
+    button[type=reset] {
+        background-color: #292929;
+        background-repeat: repeat-x;
+        background-image: -moz-linear-gradient(top, #646464, #292929);
+        background-image: -ms-linear-gradient(top, #646464, #292929);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #646464), color-stop(100%, #292929));
+        background-image: -webkit-linear-gradient(top, #646464, #292929);
+        background-image: -o-linear-gradient(top, #646464, #292929);
+        background-image: linear-gradient(top, #646464, #292929);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#646464', endColorstr='#292929', GradientType=0);
+        border: 1px solid #161616;
+    }
+
+    button:hover,button[type=reset]:hover {
+        background-position: 0 -15px;
+    }
+
+    input[type=checkbox],input[type=radio] {
+        width: auto;
+        height: auto;
+        margin-left: 0;
+        padding: 0;
+        line-height: normal;
+        float: left;
+        border: none;
+    }
+
+    input[type=file] {
+        background-color: #37393c;
+        height: 27px;
+        border: none;
+    }
+
+    input[type=file]:focus, input[type=checkbox]:focus, select:focus {
+        outline: 1px dotted #666;
+    }
+
+    input[disabled] {
+        background-color: #343536;
+        border-color: #585858;
+        cursor: not-allowed;
+    }
+
+    button::-moz-focus-inner, input::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        padding-top: 6px;
+        float: left;
+    }
+
+    ul li {
+        display: block;
+        width: 100%;
+        clear: both;
+        margin: 0;
+    }
+
+    ul li label {
+        float: none;
+        padding: 0;
+        width: auto;
+        margin: 0 0 0 8px;
+        color: #efefef;
+    }
+</style>
+<body>
+
+<div align="center">
+    <a href="/car">car</a>
+    <a href="/tenant">tenant</a>
+    <a href="/body-type">body-type</a>
+    <a href="/brand-car">brand-car</a>
+    <a href="/city-car">city-car</a>
+    <a href="/class-car">class-car</a>
+    <a href="/transmission">transmission</a>
+    <a href="/data">data</a>
+</div>
+<div style="display: flex;justify-content: space-evenly;align-items: flex-start;">
+    <div align="center" class="red_border">
+        <form action="/car/add" method="post" style="display: flex; flex-direction: column; align-items: flex-start;">
+            <h3>Форма для добавления автомобиля</h3>
+            <div>
+                <label>Введите номер автомобиля</label>
+                <input type="text" placeholder="X000XX 00XX" name="numberCar">
+            </div>
+            <div>
+                <label>Введите цену за день</label>
+                <input type="number" name="priceCar">
+            </div>
+            <div>
+                <label>Класс автомобиля</label>
+                <select name="classId">
+                    <option th:each="class : ${classes}"
+                            th:value="${class.id}"
+                            th:text="${class.name}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label>Марка автомобиля</label>
+                <select name="brandId">
+                    <option th:each="brand : ${brands}"
+                            th:value="${brand.id}"
+                            th:text="${brand.name}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label>Введите название модели</label>
+                <input type="text" name="modelCar">
+            </div>
+            <div>
+                <label>Город автомобиля</label>
+                <select name="cityId">
+                    <option th:each="city : ${cities}"
+                            th:value="${city.id}"
+                            th:text="${city.name}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label>Кузов автомобиля</label>
+                <select name="bodyTypeId">
+                    <option th:each="bodyType : ${bodyTypes}"
+                            th:value="${bodyType.id}"
+                            th:text="${bodyType.name}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label>Коробка передач автомобиля</label>
+                <select name="transmissionId">
+                    <option th:each="transmission : ${transmissions}"
+                            th:value="${transmission.id}"
+                            th:text="${transmission.name}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Добавить</button>
+                <button type="reset">Сбросить</button>
+            </div>
+        </form>
+        <p></p>
+    </div>
+    <p></p>
+    <div align="center" class="red_border">
+        <form action="/car/update" method="post" style="display: flex; flex-direction: column; align-items: flex-start;">
+            <h3>Форма для обновления автомобиля</h3>
+            <div>
+                <label>Выберите автомобиль для обновления</label>
+                <select name="idCar">
+                    <option th:each="car : ${cars}"
+                            th:value="${car.id}"
+                            th:text="${car.numberCar} + ' ' + ${car.brandCar.name} + ' ' + ${car.modelCar}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label>Введите номер автомобиля</label>
+                <input type="text" placeholder="X000XX 00XX" name="numberCar">
+            </div>
+            <div>
+                <label>Введите цену за день</label>
+                <input type="number" name="priceCar">
+            </div>
+            <div>
+                <label>Класс автомобиля</label>
+                <select name="classId">
+                    <option th:each="class : ${classes}"
+                            th:value="${class.id}"
+                            th:text="${class.name}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label>Марка автомобиля</label>
+                <select name="brandId">
+                    <option th:each="brand : ${brands}"
+                            th:value="${brand.id}"
+                            th:text="${brand.name}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label>Введите название модели</label>
+                <input type="text" name="modelCar">
+            </div>
+            <div>
+                <label>Город автомобиля</label>
+                <select name="cityId">
+                    <option th:each="city : ${cities}"
+                            th:value="${city.id}"
+                            th:text="${city.name}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label>Кузов автомобиля</label>
+                <select name="bodyTypeId">
+                    <option th:each="bodyType : ${bodyTypes}"
+                            th:value="${bodyType.id}"
+                            th:text="${bodyType.name}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label>Коробка передач автомобиля</label>
+                <select name="transmissionId">
+                    <option th:each="transmission : ${transmissions}"
+                            th:value="${transmission.id}"
+                            th:text="${transmission.name}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Обновить</button>
+                <button type="reset">Сбросить</button>
+            </div>
+        </form>
+        <p></p>
+    </div>
+    <p></p>
+    <div>
+        <div align="center" class="red_border">
+            <form action="/car/delete" method="post" style="display: flex; flex-direction: column; align-items: flex-start;">
+                <h3>Форма для удаления автомобиля</h3>
+                <div>
+                    <label>Выберите автомобиль для удаления</label>
+                    <select name="idCar">
+                        <option th:each="car : ${cars}"
+                                th:value="${car.id}"
+                                th:text="${car.numberCar}">
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit">Удалить</button>
+                    <button type="reset">Сбросить</button>
+                </div>
+            </form>
+            <p></p>
+        </div>
+        <div align="center">
+            <form action="/car/rental-car" method="get" style="display: flex; flex-direction: column; align-items: flex-start;">
+                <h1>Выберите срок аренды</h1>
+                <div>
+                    <label style="text-align: right">С</label><input type="date" name="startLease">
+                </div>
+                <div align="center">
+                    <label style="text-align: right"> по </label><input type="date" name="endLease">
+                </div>
+                <button type="submit">Показать доступные машины</button>
+                <button type="reset">Сбросить</button>
+            </form>
+        </div>
+    </div>
+</div>
+<p></p>
+<p></p>
+<div align="center">
+    <h3>Все автомобили</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Номер</th>
+            <th>ID</th>
+            <th>Марка</th>
+            <th>Модель</th>
+            <th>Класс</th>
+            <th>Номер авто</th>
+            <th>Город</th>
+            <th>Кузов</th>
+            <th>Коробка передач</th>
+            <th>Цена (за день)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car, iterStat : ${cars}"
+            th:style="${iterStat.odd}? 'font-weight: bold;'" class="red_border">
+            <td th:text="${iterStat.index}+1"></td>
+            <td th:text="${car.id}"></td>
+            <td th:text="${car.brandCar.name}"></td>
+            <td th:text="${car.modelCar}"></td>
+            <td th:text="${car.classCar.name}"></td>
+            <td th:text="${car.numberCar}"></td>
+            <td th:text="${car.cityCar.name}"></td>
+            <td th:text="${car.bodyType.name}"></td>
+            <td th:text="${car.transmission.name}"></td>
+            <td th:text="${car.price}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Rental car</title>
+</head>
+<style>
+    div.red_border{
+        border: 3px solid black;
+    }
+
+    td,tr {
+        padding: 3px;
+        border: 1px solid black;
+    }
+</style>
+<body>
+<div align="center">
+    <a href="/car">car</a>
+    <a href="/tenant">tenant</a>
+    <a href="/body-type">body-type</a>
+    <a href="/brand-car">brand-car</a>
+    <a href="/city-car">city-car</a>
+    <a href="/class-car">class-car</a>
+    <a href="/transmission">transmission</a>
+    <a href="/data">data</a>
+</div>
+<div align="center" class="red_border">
+    <h3>Форма для добавления бренда</h3>
+    <form method="post" action="/brand-car/add">
+        <p>Название бренда: <input type="text" name="nameBrandCar"/></p>
+        <p><input type="submit" value="Добавить"></p>
+    </form>
+    <p></p>
+</div>
+<p></p>
+<div align="center" class="red_border">
+    <h3>Форма для удаления бренда</h3>
+    <form action="/brand-car/delete" method="post">
+        <select class="form-control" name="idBrandCar">
+            <option th:each="brand : ${brands}"
+                    th:value="${brand.id}"
+                    th:text="${brand.name}">
+            </option>
+        </select>
+        <button type="submit">Удалить</button>
+    </form>
+    <p></p>
+</div>
+<p></p>
+<div align="center" class="red_border">
+    <h3>Форма для обновления бренда</h3>
+    <form action="/brand-car/update" method="post" >
+        <select class="form-control" name="idBrandCar">
+            <option th:each="brand : ${brands}"
+                    th:value="${brand.id}"
+                    th:text="${brand.name}">
+            </option>
+        </select>
+        <p><input type="text" name="nameBrandCar"></p>
+        <button type="submit">Изменить</button>
+    </form>
+    <p></p>
+</div>
+<p></p>
+<div align="center">
+    <h3>Все бренды</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Номер</th>
+            <th>Бренд</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="brand, iterStat : ${brands}"
+            th:style="${iterStat.odd}? 'font-weight: bold;'" class="red_border">
+            <td th:text="${iterStat.index}+1"></td>
+            <td th:text="${brand.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Rental car</title>
+</head>
+<style>
+    @-webkit-keyframes example {
+        from {top:-100px;opacity: 0;}
+        to {top:0px;opacity:1;}
+    }
+
+    /* Add animation (Standard syntax) */
+    @keyframes example {
+        from {top:-100px;opacity: 0;}
+        to {top:0px;opacity:1;}
+    }
+
+    /* The modal's background */
+    .modal {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Display the modal when targeted */
+    .modal:target {
+        display: table;
+        position: absolute;
+    }
+
+    /* The modal box */
+    .modal-dialog {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    /* The modal's content */
+    .modal-dialog .modal-content {
+        margin: auto;
+        background-color: #f3f3f3;
+        position: relative;
+        padding: 0;
+        outline: 0;
+        border: 1px #777 solid;
+        text-align: justify;
+        width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        /* Add animation */
+        -webkit-animation-name: example; /* Chrome, Safari, Opera */
+        -webkit-animation-duration: 0.5s; /* Chrome, Safari, Opera */
+        animation-name: example;
+        animation-duration: 0.5s;
+    }
+
+    /* The button used to close the modal */
+    .closebtn {
+        text-decoration: none;
+        float: right;
+        font-size: 35px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .closebtn:hover,
+    .closebtn:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .container {
+        padding: 2px 16px;
+    }
+
+    header {
+        background-color: #0030ff;
+        font-size: 25px;
+        color: white;
+    }
+
+    footer {
+        background-color: #0011ff;
+        font-size: 20px;
+        color: white;
+    }
+
+    TABLE {
+        border-collapse: collapse; /* Убираем двойные линии между ячейками */
+        width: 1000px; /* Ширина таблицы */
+    }
+    TH, TD {
+        border: 3px solid black; /* Параметры рамки */
+        text-align: center; /* Выравнивание по центру */
+        padding: 4px; /* Поля вокруг текста */
+    }
+    TH {
+        background: #fc0; /* Цвет фона ячейки */
+        height: 40px; /* Высота ячеек */
+        vertical-align: bottom; /* Выравнивание по нижнему краю */
+        padding: 0; /* Убираем поля вокруг текста */
+    }
+    div {
+        clear: both;
+        padding: 8px 0;
+        overflow: hidden;
+    }
+    form {
+        padding: 20px;
+        font-family: Arial;
+        font-size: 13px;
+        display: inline-block;
+        background-color: #37393c;
+        color: white;
+    }
+    label {
+        padding-top: 6px;
+        line-height: 18px;
+        float: left;
+        color: #b6daff;
+        margin-right: 7px;
+        width: 120px;
+    }
+    input,select,textarea {
+        display: inline-block;
+        width: 250px;
+        height: 18px;
+        padding: 4px;
+        line-height: 18px;
+        color: #efefef;
+        border: 1px solid #a4a4a4;
+        background-color: #202223;
+        -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+        -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+        -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+        -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+        transition: border linear 0.2s, box-shadow linear 0.2s;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+    input:focus,select:focus,textarea:focus {
+        border: 1px solid #97b7d9;
+        outline: none;
+        -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 8px rgba(151, 183, 217, 0.6);
+        -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 8px rgba(151, 183, 217, 0.6);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 8px rgba(151, 183, 217, 0.6);
+    }
+    select {
+        width: 200px;
+        height: auto;
+    }
+    textarea {
+        height: auto;
+    }
+    button {
+        display: inline-block;
+        width: auto;
+        height: auto;
+        background-color: #3d6182;
+        background-repeat: repeat-x;
+        background-image: -moz-linear-gradient(top, #8db7dd, #3d6182);
+        background-image: -ms-linear-gradient(top, #8db7dd, #3d6182);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #8db7dd), color-stop(100%, #3d6182));
+        background-image: -webkit-linear-gradient(top, #8db7dd, #3d6182);
+        background-image: -o-linear-gradient(top, #8db7dd, #3d6182);
+        background-image: linear-gradient(top, #8db7dd, #3d6182);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8db7dd', endColorstr='#3d6182', GradientType=0);
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        border: 1px solid #19252f;
+        padding: 8px 17px 9px;
+        color: white;
+        cursor: pointer;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -webkit-transition: 0.1s linear all;
+        -moz-transition: 0.1s linear all;
+        -ms-transition: 0.1s linear all;
+        -o-transition: 0.1s linear all;
+        transition: 0.1s linear all;
+    }
+    button[type=reset] {
+        background-color: #292929;
+        background-repeat: repeat-x;
+        background-image: -moz-linear-gradient(top, #646464, #292929);
+        background-image: -ms-linear-gradient(top, #646464, #292929);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #646464), color-stop(100%, #292929));
+        background-image: -webkit-linear-gradient(top, #646464, #292929);
+        background-image: -o-linear-gradient(top, #646464, #292929);
+        background-image: linear-gradient(top, #646464, #292929);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#646464', endColorstr='#292929', GradientType=0);
+        border: 1px solid #161616;
+    }
+    button:hover,button[type=reset]:hover {
+        background-position: 0 -15px;
+    }
+    input[type=checkbox],input[type=radio] {
+        width: auto;
+        height: auto;
+        margin-left: 0;
+        padding: 0;
+        line-height: normal;
+        float: left;
+        border: none;
+    }
+    input[type=file] {
+        background-color: #37393c;
+        height: 27px;
+        border: none;
+    }
+    input[type=file]:focus, input[type=checkbox]:focus, select:focus {
+        outline: 1px dotted #666;
+    }
+    input[disabled] {
+        background-color: #343536;
+        border-color: #585858;
+        cursor: not-allowed;
+    }
+    button::-moz-focus-inner, input::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        padding-top: 6px;
+        float: left;
+    }
+    ul li {
+        display: block;
+        width: 100%;
+        clear: both;
+        margin: 0;
+    }
+    ul li label {
+        float: none;
+        padding: 0;
+        width: auto;
+        margin: 0 0 0 8px;
+        color: #efefef;
+    }
+</style>
+<body>
+<div th:each="car, iterStat : ${cars}"
+     th:id="${car.numberCar}" th:class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <header class="container">
+                <a href="#" class="closebtn">×</a>
+                <h2 th:text="${car.brandCar.name} + ' ' + ${car.modelCar} + ' ' + ${car.numberCar}"></h2>
+            </header>
+            <div class="container" align="center">
+                <h3>История аренды авто</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>N</th>
+                        <th>ID</th>
+                        <th>Номер телефона</th>
+                        <th>Срок аренды</th>
+                        <th>Марка</th>
+                        <th>Модель</th>
+                        <th>Класс</th>
+                        <th>Номер авто</th>
+                        <th>Город</th>
+                        <th>Кузов</th>
+                        <th>Коробка передач</th>
+                        <th>Цена (за день)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="rentalCar, iterStat : ${car.rentalCar}"
+                        th:style="${iterStat.odd}? 'font-weight: bold;'" class="red_border">
+                        <td th:text="${iterStat.index}+1"></td>
+                        <td th:text="${car.id}"></td>
+                        <td th:text="${rentalCar.tenant.phoneNumber}"></td>
+                        <td th:text="${#dates.format(rentalCar.startLease, 'dd MMM yyyy')} + ' - ' + ${#dates.format(rentalCar.endLease, 'dd MMM yyyy')}"></td>
+                        <td th:text="${car.brandCar.name}"></td>
+                        <td th:text="${car.modelCar}"></td>
+                        <td th:text="${car.classCar.name}"></td>
+                        <td th:text="${car.numberCar}"></td>
+                        <td th:text="${car.cityCar.name}"></td>
+                        <td th:text="${car.bodyType.name}"></td>
+                        <td th:text="${car.transmission.name}"></td>
+                        <td th:text="${car.price}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div align="center">
+    <a href="/car">car</a>
+    <a href="/tenant">tenant</a>
+    <a href="/body-type">body-type</a>
+    <a href="/brand-car">brand-car</a>
+    <a href="/city-car">city-car</a>
+    <a href="/class-car">class-car</a>
+    <a href="/transmission">transmission</a>
+    <a href="/data">data</a>
+</div>
+<div align="center" style="display: flex; justify-content: space-evenly; align-items: stretch;">
+    <form action="/car/rental-car/filter-values" method="GET">
+        <div class="filter" style="display: inline-flex;flex-direction: column; flex-wrap: wrap;align-items: center;margin-bottom: 15px;">
+            <div style="width: 400px; display: none" align="center">
+                <h3>Срок аренды</h3>
+                <input type="date" name="startLease" th:value="${startLease}" readonly>
+                <input type="date" name="endLease" th:value="${endLease}" readonly>
+            </div>
+            <label>Сортировка</label>
+            <select name="typeSort">
+                <option value="brandCarName">По умолчанию</option>
+                <option value="priceAsc">Дешевеле</option>
+                <option value="priceDesc">Дороже</option>
+            </select>
+            <label>Класс</label>
+            <select name="nameClass">
+                <option value=""></option>
+                <option th:each="class, iterStat : ${classes}"
+                        th:value="${class.name}"
+                        th:text="${class.name}">
+                </option>
+            </select>
+            <label>Коробка передач</label>
+            <select name="nameTransmission">
+                <option value=""></option>
+                <option th:each="transmission, iterStat : ${transmissions}"
+                        th:value="${transmission.name}"
+                        th:text="${transmission.name}">
+                </option>
+            </select>
+            <label>Марка</label>
+            <select name="nameBrandCar">
+                <option value=""></option>
+                <option th:each="brand, iterStat : ${brands}"
+                        th:value="${brand.name}"
+                        th:text="${brand.name}">
+                </option>
+            </select>
+            <label>Город</label>
+            <select name="nameCity">
+                <option value=""></option>
+                <option th:each="city, iterStat : ${cities}"
+                        th:value="${city.name}"
+                        th:text="${city.name}">
+                </option>
+            </select>
+            <label>Кузов</label>
+            <select name="nameBodyType">
+                <option value=""></option>
+                <option th:each="body, iterStat : ${bodies}"
+                        th:value="${body.name}"
+                        th:text="${body.name}">
+                </option>
+            </select>
+        </div>
+        <div>
+            <button type="reset">Сбросить</button>
+            <button type="submit">Отфильтровать</button>
+        </div>
+    </form>
+    <div style="display: flex;background: darkcyan;margin-top: 11px;flex-direction: column;justify-content: flex-start;">
+        <h1 style="font-size: 25px; color: black;">Свободные машины</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Номер</th>
+                <th>ID</th>
+                <th>Марка</th>
+                <th>Модель</th>
+                <th>Класс</th>
+                <th>Номер авто</th>
+                <th>Город</th>
+                <th>Кузов</th>
+                <th>Коробка передач</th>
+                <th>Цена (за день)</th>
+                <th>Просмотр истории</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="car, iterStat : ${cars}"
+                th:style="${iterStat.odd}? 'font-weight: bold;'" class="red_border">
+                <td th:text="${iterStat.index}+1"></td>
+                <td th:text="${car.id}"></td>
+                <td th:text="${car.brandCar.name}"></td>
+                <td th:text="${car.modelCar}"></td>
+                <td th:text="${car.classCar.name}"></td>
+                <td th:text="${car.numberCar}"></td>
+                <td th:text="${car.cityCar.name}"></td>
+                <td th:text="${car.bodyType.name}"></td>
+                <td th:text="${car.transmission.name}"></td>
+                <td th:text="${car.price}"></td>
+                <td><a th:href="'#' + ${car.numberCar}">История авто</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div align="center" class="red_border">
+    <form action="/car/rental-car/add" method="post">
+        <div style="width: 400px;">
+            <label>Введите номер строки свободной машины</label>
+            <select name="idCar">
+                <option th:each="car, iterStat : ${cars}"
+                        th:value="${car.id}"
+                        th:text="${iterStat.count}">
+                </option>
+            </select>
+        </div>
+        <div align="center">
+            <h3>1. Кто арендует?</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Номер телефона</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Стаж вождения</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="tenant, iterStat : ${tenants}"
+                    th:style="${iterStat.odd}? 'font-weight: bold;'" class="red_border">
+                    <td th:text="${iterStat.index}+1"></td>
+                    <td th:text="${tenant.phoneNumber}"></td>
+                    <td th:text="${tenant.firstName}"></td>
+                    <td th:text="${tenant.lastName}"></td>
+                    <td th:text="${tenant.yearDriving}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <p></p>
+            <a href="/tenant">Если арендатор отсутсвтует в списке, то кликните на эту надпись</a>
+        </div>
+        <div style="width: 400px;">
+            <label>Введите номер с таблицы</label>
+            <select name="phoneNumber">
+                <option th:each="tenant, iterStat : ${tenants}"
+                        th:value="${tenant.phoneNumber}"
+                        th:text="${iterStat.count}">
+                </option>
+            </select>
+        </div>
+        <div style="width: 400px;" align="center">
+            <h3>Срок аренды</h3>
+            <input type="date" name="startLease" th:value="${startLease}" readonly>
+            <input type="date" name="endLease" th:value="${endLease}" readonly>
+        </div>
+        <div>
+            <button type="submit">Добавить</button>
+            <button type="reset">Сбросить</button>
+        </div>
+    </form>
+    <p></p>
+</div>
+<p></p>
+<p></p>
+<div align="center" class="red_border">
+    <form action="/car/rental-car/update" method="post">
+        <div>
+            <h2>Таблица всех аренд</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>N</th>
+                    <th>ID</th>
+                    <th>Номер телефона</th>
+                    <th>Срок аренды</th>
+                    <th>Марка</th>
+                    <th>Модель</th>
+                    <th>Класс</th>
+                    <th>Номер авто</th>
+                    <th>Город</th>
+                    <th>Кузов</th>
+                    <th>Коробка передач</th>
+                    <th>Доход</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="rentalCar, iterStat : ${rentalCars}"
+                    th:style="${iterStat.odd}? 'font-weight: bold;'" class="red_border">
+                    <td th:text="${iterStat.index}+1"></td>
+                    <td th:text="${rentalCar.id}"></td>
+                    <td th:text="${rentalCar.tenant.phoneNumber}"></td>
+                    <td th:text="${#dates.format(rentalCar.startLease, 'dd MMM yyyy')} + ' - ' + ${#dates.format(rentalCar.endLease, 'dd MMM yyyy')}"></td>
+                    <td th:text="${rentalCar.car.brandCar.name}"></td>
+                    <td th:text="${rentalCar.car.modelCar}"></td>
+                    <td th:text="${rentalCar.car.classCar.name}"></td>
+                    <td th:text="${rentalCar.car.numberCar}"></td>
+                    <td th:text="${rentalCar.car.cityCar.name}"></td>
+                    <td th:text="${rentalCar.car.bodyType.name}"></td>
+                    <td th:text="${rentalCar.car.transmission.name}"></td>
+                    <td th:text="${rentalCar.price}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+    <p></p>
+</div>
+<p></p>
+</body>
+</html>

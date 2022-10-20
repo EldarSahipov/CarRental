@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Rental car</title>
+</head>
+<style>
+    @-webkit-keyframes example {
+        from {top:-100px;opacity: 0;}
+        to {top:0px;opacity:1;}
+    }
+
+    /* Add animation (Standard syntax) */
+    @keyframes example {
+        from {top:-100px;opacity: 0;}
+        to {top:0px;opacity:1;}
+    }
+
+    /* The modal's background */
+    .modal {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Display the modal when targeted */
+    .modal:target {
+        display: table;
+        position: absolute;
+    }
+
+    /* The modal box */
+    .modal-dialog {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    /* The modal's content */
+    .modal-dialog .modal-content {
+        margin: auto;
+        background-color: #f3f3f3;
+        position: relative;
+        padding: 0;
+        outline: 0;
+        border: 1px #777 solid;
+        text-align: justify;
+        width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        /* Add animation */
+        -webkit-animation-name: example; /* Chrome, Safari, Opera */
+        -webkit-animation-duration: 0.5s; /* Chrome, Safari, Opera */
+        animation-name: example;
+        animation-duration: 0.5s;
+    }
+
+    /* The button used to close the modal */
+    .closebtn {
+        text-decoration: none;
+        float: right;
+        font-size: 35px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .closebtn:hover,
+    .closebtn:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .container {
+        padding: 2px 16px;
+    }
+
+    header {
+        background-color: #0030ff;
+        font-size: 25px;
+        color: white;
+    }
+
+    footer {
+        background-color: #0011ff;
+        font-size: 20px;
+        color: white;
+    }
+
+    TABLE {
+        border-collapse: collapse; /* Убираем двойные линии между ячейками */
+        width: 1000px; /* Ширина таблицы */
+    }
+    TH, TD {
+        border: 3px solid black; /* Параметры рамки */
+        text-align: center; /* Выравнивание по центру */
+        padding: 4px; /* Поля вокруг текста */
+    }
+    TH {
+        background: #fc0; /* Цвет фона ячейки */
+        height: 40px; /* Высота ячеек */
+        vertical-align: bottom; /* Выравнивание по нижнему краю */
+        padding: 0; /* Убираем поля вокруг текста */
+    }
+    div {
+        clear: both;
+        padding: 8px 0;
+        overflow: hidden;
+    }
+
+    form {
+        padding: 20px;
+        font-family: Arial;
+        font-size: 13px;
+        display: inline-block;
+        background-color: #37393c;
+        color: white;
+    }
+
+    label {
+        padding-top: 6px;
+        line-height: 18px;
+        float: left;
+        color: #b6daff;
+        margin-right: 7px;
+        width: 120px;
+    }
+
+    input,select,textarea {
+        display: inline-block;
+        width: 250px;
+        height: 18px;
+        padding: 4px;
+        line-height: 18px;
+        color: #efefef;
+        border: 1px solid #a4a4a4;
+        background-color: #202223;
+        -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+        -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+        -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+        -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+        transition: border linear 0.2s, box-shadow linear 0.2s;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+    input:focus,select:focus,textarea:focus {
+        border: 1px solid #97b7d9;
+        outline: none;
+        -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 8px rgba(151, 183, 217, 0.6);
+        -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 8px rgba(151, 183, 217, 0.6);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 8px rgba(151, 183, 217, 0.6);
+    }
+
+    select {
+        width: 200px;
+        height: auto;
+    }
+
+    textarea {
+        height: auto;
+    }
+
+    button {
+        display: inline-block;
+        width: auto;
+        height: auto;
+        background-color: #3d6182;
+        background-repeat: repeat-x;
+        background-image: -khtml-gradient(linear, left top, left bottom, from(#8db7dd), to(#3d6182));
+        background-image: -moz-linear-gradient(top, #8db7dd, #3d6182);
+        background-image: -ms-linear-gradient(top, #8db7dd, #3d6182);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #8db7dd), color-stop(100%, #3d6182));
+        background-image: -webkit-linear-gradient(top, #8db7dd, #3d6182);
+        background-image: -o-linear-gradient(top, #8db7dd, #3d6182);
+        background-image: linear-gradient(top, #8db7dd, #3d6182);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8db7dd', endColorstr='#3d6182', GradientType=0);
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        border: 1px solid #19252f;
+        padding: 8px 17px 9px;
+        color: white;
+        cursor: pointer;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -webkit-transition: 0.1s linear all;
+        -moz-transition: 0.1s linear all;
+        -ms-transition: 0.1s linear all;
+        -o-transition: 0.1s linear all;
+        transition: 0.1s linear all;
+    }
+
+    button[type=reset] {
+        background-color: #292929;
+        background-repeat: repeat-x;
+        background-image: -khtml-gradient(linear, left top, left bottom, from(#646464), to(#292929));
+        background-image: -moz-linear-gradient(top, #646464, #292929);
+        background-image: -ms-linear-gradient(top, #646464, #292929);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #646464), color-stop(100%, #292929));
+        background-image: -webkit-linear-gradient(top, #646464, #292929);
+        background-image: -o-linear-gradient(top, #646464, #292929);
+        background-image: linear-gradient(top, #646464, #292929);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#646464', endColorstr='#292929', GradientType=0);
+        border: 1px solid #161616;
+    }
+
+    button:hover,button[type=reset]:hover {
+        background-position: 0 -15px;
+    }
+
+    input[type=checkbox],input[type=radio] {
+        width: auto;
+        height: auto;
+        margin-left: 0;
+        padding: 0;
+        line-height: normal;
+        float: left;
+        border: none;
+    }
+
+    input[type=file] {
+        background-color: #37393c;
+        height: 27px;
+        border: none;
+    }
+
+    input[type=file]:focus, input[type=checkbox]:focus, select:focus {
+        outline: 1px dotted #666;
+    }
+
+    input[disabled] {
+        background-color: #343536;
+        border-color: #585858;
+        cursor: not-allowed;
+    }
+
+    button::-moz-focus-inner, input::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        padding-top: 6px;
+        float: left;
+    }
+
+    ul li {
+        display: block;
+        width: 100%;
+        clear: both;
+        margin: 0;
+    }
+
+    ul li label {
+        float: none;
+        padding: 0;
+        width: auto;
+        margin: 0 0 0 8px;
+        color: #efefef;
+    }
+</style>
+<body>
+<div th:each="tenant, iterStat : ${tenants}"
+     th:id="${tenant.phoneNumber}" th:class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <header class="container">
+                <a href="#" class="closebtn">×</a>
+                <h2 th:text="${tenant.phoneNumber} + ' ' + ${tenant.getFirstName()} + ' ' + ${tenant.lastName} + ' (стаж вождения: ' + ${tenant.yearDriving} + ')'"></h2>
+            </header>
+            <div class="container" align="center">
+                <h3>Аренды авто</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>N</th>
+                        <th>ID</th>
+                        <th>Срок аренды</th>
+                        <th>Марка</th>
+                        <th>Модель</th>
+                        <th>Класс</th>
+                        <th>Номер авто</th>
+                        <th>Город</th>
+                        <th>Кузов</th>
+                        <th>Коробка передач</th>
+                        <th>Цена (за день)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="rentalCar, iterStat : ${tenant.rentalCarList}"
+                        th:style="${iterStat.odd}? 'font-weight: bold;'" class="red_border">
+                        <td th:text="${iterStat.index}+1"></td>
+                        <td th:text="${rentalCar.car.id}"></td>
+                        <td th:text="${#dates.format(rentalCar.startLease, 'dd MMM yyyy')} + ' - ' + ${#dates.format(rentalCar.endLease, 'dd MMM yyyy')}"></td>
+                        <td th:text="${rentalCar.car.brandCar.name}"></td>
+                        <td th:text="${rentalCar.car.modelCar}"></td>
+                        <td th:text="${rentalCar.car.classCar.name}"></td>
+                        <td th:text="${rentalCar.car.numberCar}"></td>
+                        <td th:text="${rentalCar.car.cityCar.name}"></td>
+                        <td th:text="${rentalCar.car.bodyType.name}"></td>
+                        <td th:text="${rentalCar.car.transmission.name}"></td>
+                        <td th:text="${rentalCar.car.price}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div style="display: flex; justify-content: center;">
+                    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                        <h3>Дополнительная информация</h3>
+                        <p th:text="'ФИО: ' + ${tenant.firstName} + ' ' + ${tenant.lastName}"></p>
+                        <p th:text="'Phone: ' + ${tenant.phoneNumber}"></p>
+                        <p th:text="'Email: homie652@gmail.com' "></p>
+                        <p th:text="'Стаж вождения: ' + ${tenant.yearDriving}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div align="center">
+    <a href="/car">car</a>
+    <a href="/tenant">tenant</a>
+    <a href="/body-type">body-type</a>
+    <a href="/brand-car">brand-car</a>
+    <a href="/city-car">city-car</a>
+    <a href="/class-car">class-car</a>
+    <a href="/transmission">transmission</a>
+    <a href="/data">data</a>
+</div>
+<div style="display: flex;justify-content: space-evenly;align-items: center;">
+    <div align="center" class="red_border">
+        <form action="/tenant/add" method="post">
+            <h3>Форма для добавления арендатора</h3>
+            <div>
+                <label>Введите имя</label>
+                <input type="text" placeholder="Иван" name="firstName">
+            </div>
+            <div>
+                <label>Введите фамилию</label>
+                <input type="text" placeholder="Иванов" name="lastName">
+            </div>
+            <div>
+                <label>Введите номер телефона</label>
+                <input type="text" placeholder="+79999999999" name="phoneNumber">
+            </div>
+            <div>
+                <label>Введите стаж вождения</label>
+                <input type="number" name="yearDriving">
+            </div>
+            <div>
+                <button type="submit">Добавить</button>
+                <button type="reset">Сбросить</button>
+            </div>
+        </form>
+        <p></p>
+    </div>
+    <p></p>
+    <div align="center" class="red_border">
+        <form action="/tenant/delete" method="post">
+            <h3>Форма для удаления арендатора</h3>
+            <div>
+                <label>Выберите арендатора для удаления</label>
+                <select name="phoneNumber">
+                    <option th:each="tenant : ${tenants}"
+                            th:value="${tenant.phoneNumber}"
+                            th:text="${tenant.lastName} + ' ' + ${tenant.firstName} + ' стаж вождения: ' + ${tenant.yearDriving}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Удалить</button>
+                <button type="reset">Сбросить</button>
+            </div>
+        </form>
+        <p></p>
+    </div>
+    <p></p>
+    <div align="center" class="red_border">
+        <form action="/tenant/update" method="post">
+            <h3>Форма для обновления информации об арендаторе</h3>
+            <div>
+                <label>Выберите арендатора для обновления</label>
+                <select name="phoneNumber">
+                    <option th:each="tenant : ${tenants}"
+                            th:value="${tenant.phoneNumber}"
+                            th:text="${tenant.lastName} + ' ' + ${tenant.firstName} + ' стаж вождения: ' + ${tenant.yearDriving}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label>Введите имя</label>
+                <input type="text" placeholder="Иван" name="firstName">
+            </div>
+            <div>
+                <label>Введите фамилию</label>
+                <input type="text" placeholder="Иванов" name="lastName">
+            </div>
+            <div>
+                <label>Введите стаж вождения</label>
+                <input type="number" name="yearDriving">
+            </div>
+            <div>
+                <button type="submit">Обновить</button>
+                <button type="reset">Сбросить</button>
+            </div>
+        </form>
+        <p></p>
+    </div>
+</div>
+<p></p>
+<div align="center">
+    <h3>Все арендаторы</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Номер телефона</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Стаж вождения</th>
+            <th>Просмотр истории</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tenant, iterStat : ${tenants}"
+            th:style="${iterStat.odd}? 'font-weight: bold;'" class="red_border">
+            <td th:text="${iterStat.index}+1"></td>
+            <td th:text="${tenant.phoneNumber}"></td>
+            <td th:text="${tenant.firstName}"></td>
+            <td th:text="${tenant.lastName}"></td>
+            <td th:text="${tenant.yearDriving}"></td>
+            <td><a th:href="'#' + ${tenant.phoneNumber}">История арендатора</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

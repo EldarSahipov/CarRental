@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Rental car</title>
+</head>
+<style>
+    div.red_border{
+        border: 3px solid black;
+    }
+
+    td,tr {
+        padding: 3px; /* Поля вокруг содержимого таблицы */
+        border: 1px solid black; /* Параметры рамки */
+    }
+</style>
+<body>
+<div align="center">
+    <a href="/car">car</a>
+    <a href="/tenant">tenant</a>
+    <a href="/body-type">body-type</a>
+    <a href="/brand-car">brand-car</a>
+    <a href="/city-car">city-car</a>
+    <a href="/class-car">class-car</a>
+    <a href="/transmission">transmission</a>
+    <a href="/data">data</a>
+</div>
+<div align="center" class="red_border">
+    <h3>Форма для добавления кузова</h3>
+    <form method="post" action="/body-type/add">
+        <p>Название кузова: <input type="text" name="nameBodyType"/></p>
+        <p><input type="submit" value="Добавить"></p>
+    </form>
+    <p></p>
+</div>
+<p></p>
+<div align="center" class="red_border">
+    <h3>Форма для удаления кузова</h3>
+    <form action="/body-type/delete" method="post">
+        <select class="form-control" name="idBodyType">
+            <option th:each="bodyType : ${bodyTypes}"
+                    th:value="${bodyType.id}"
+                    th:text="${bodyType.name}">
+            </option>
+        </select>
+        <button type="submit">Удалить</button>
+    </form>
+    <p></p>
+</div>
+<p></p>
+<div align="center" class="red_border">
+    <h3>Форма для обновления кузова</h3>
+    <form action="/body-type/update" method="post" >
+        <select class="form-control" name="idBodyType">
+            <option th:each="bodyType : ${bodyTypes}"
+                    th:value="${bodyType.id}"
+                    th:text="${bodyType.name}">
+            </option>
+        </select>
+        <p><input type="text" name="nameBodyType"></p>
+        <button type="submit">Изменить</button>
+    </form>
+    <p></p>
+</div>
+<p></p>
+<div align="center">
+    <h3>Все кузовы</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Номер</th>
+            <th>Кузов</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="body, iterStat : ${bodyTypes}"
+            th:style="${iterStat.odd}? 'font-weight: bold;'" class="red_border">
+            <td th:text="${iterStat.index}+1"></td>
+            <td th:text="${body.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
