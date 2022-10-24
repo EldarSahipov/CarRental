@@ -1,6 +1,7 @@
 package com.example.carrental.repo;
 
 import com.example.carrental.entity.Car;
+import com.example.carrental.entity.dto.PopularAuto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -46,9 +47,8 @@ public interface CarRepository extends JpaRepository<Car, Long> {
             FROM dbo.car
              LEFT OUTER JOIN dbo.rental_car ON dbo.car.id = dbo.rental_car.car_id
                 WHERE (dbo.rental_car.car_id IS NULL)
-                    OR ((?1 >= dbo.rental_car.end_lease)
-                        OR (?2 <= dbo.rental_car.start_lease)
-                            AND dbo.rental_car.start_lease > CONVERT(date, GETDATE()))""", nativeQuery = true)
+                    OR ((?1 > dbo.rental_car.end_lease) OR (?2 < dbo.rental_car.start_lease)
+                            AND ?1 > CONVERT(date, GETDATE()))""", nativeQuery = true)
     List<Car> getFreeCars(Date startLease, Date endLease);
 
     @Transactional
@@ -74,8 +74,8 @@ public interface CarRepository extends JpaRepository<Car, Long> {
                                             JOIN dbo.city_car ON dbo.car.city_id = dbo.city_car.id
                                                 JOIN dbo.body_type ON dbo.car.body_type_id = dbo.body_type.id
                 WHERE  ((dbo.rental_car.car_id IS NULL)
-                OR ((?1 >= dbo.rental_car.end_lease) OR (?2 <= dbo.rental_car.start_lease)
-                  AND dbo.rental_car.start_lease > CONVERT(date, GETDATE())))
+                OR ((?1 > dbo.rental_car.end_lease) OR (?2 < dbo.rental_car.start_lease)
+                  AND ?1 > CONVERT(date, GETDATE())))
                           AND dbo.class_car.name LIKE '%' + ?3
                               AND dbo.transmission.name LIKE '%' + ?4
                                   AND dbo.brand_car.name LIKE '%' + ?5
@@ -101,8 +101,8 @@ public interface CarRepository extends JpaRepository<Car, Long> {
                                             JOIN dbo.city_car ON dbo.car.city_id = dbo.city_car.id
                                                 JOIN dbo.body_type ON dbo.car.body_type_id = dbo.body_type.id
                 WHERE  ((dbo.rental_car.car_id IS NULL)
-                OR ((?1 >= dbo.rental_car.end_lease) OR (?2 <= dbo.rental_car.start_lease)
-                  AND dbo.rental_car.start_lease > CONVERT(date, GETDATE())))
+                OR ((?1 > dbo.rental_car.end_lease) OR (?2 < dbo.rental_car.start_lease)
+                  AND ?1 > CONVERT(date, GETDATE())))
                           AND dbo.class_car.name LIKE '%' + ?3
                               AND dbo.transmission.name LIKE '%' + ?4
                                   AND dbo.brand_car.name LIKE '%' + ?5
@@ -129,7 +129,7 @@ public interface CarRepository extends JpaRepository<Car, Long> {
                                                 JOIN dbo.body_type ON dbo.car.body_type_id = dbo.body_type.id
                 WHERE  ((dbo.rental_car.car_id IS NULL)
                 OR ((?1 >= dbo.rental_car.end_lease) OR (?2 <= dbo.rental_car.start_lease)
-                  AND dbo.rental_car.start_lease > CONVERT(date, GETDATE())))
+                  AND ?1 > CONVERT(date, GETDATE())))
                           AND dbo.class_car.name LIKE '%' + ?3
                               AND dbo.transmission.name LIKE '%' + ?4
                                   AND dbo.brand_car.name LIKE '%' + ?5
@@ -145,7 +145,9 @@ public interface CarRepository extends JpaRepository<Car, Long> {
                                         String nameBodyType);
 
     @Query(value = """
-            SELECT TOP(3) rental_car.car_id, COUNT(*) as 'CountRental' FROM rental_car
-            group by rental_car.car_id order by CountRental desc""", nativeQuery = true)
+            SELECT TOP(3) car_id, class_id, brand_id, number_car, c.price, city_id, body_type_id, transmission_id, model, COUNT(*) as 'CountRental' FROM rental_car
+            join car c on c.id = rental_car.car_id
+            group by car_id, class_id, brand_id, number_car, c.price, city_id, body_type_id, transmission_id, model
+            order by CountRental desc""", nativeQuery = true)
     List<Car> getPopularCars();
 }

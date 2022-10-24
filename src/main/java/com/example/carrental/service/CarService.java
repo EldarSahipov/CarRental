@@ -1,6 +1,7 @@
 package com.example.carrental.service;
 
 import com.example.carrental.entity.Car;
+import com.example.carrental.entity.dto.PopularAuto;
 import com.example.carrental.repo.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
