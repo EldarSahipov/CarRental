@@ -1,4 +1,4 @@
-package com.example.carrental.entity;
+package com.example.carrental.entity.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

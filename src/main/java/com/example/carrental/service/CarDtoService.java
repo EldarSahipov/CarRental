@@ -1,7 +1,7 @@
 package com.example.carrental.service;
 
 import com.example.carrental.entity.Car;
-import com.example.carrental.entity.CarDto;
+import com.example.carrental.entity.dto.CarDto;
 import com.example.carrental.repo.RentalCarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
