@@ -251,18 +251,63 @@
         margin: 0 0 0 8px;
         color: #efefef;
     }
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        background-color: #484848;
+        padding: 20px 10px;
+    }
+
+    .wrap-logo {
+        display: flex;
+        align-items: center;
+
+    }
+
+    header a {
+        color: #ffffff;
+        padding: 17px;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 4px;
+    }
+
+    header a.logo {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    header a:hover {
+        background-color: #c7ef5d;
+        color: #000000;
+    }
+
+    header a.active {
+        background-color: #C7EF5DFF;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+    }
 </style>
 <body>
-<div align="center">
-    <a href="/car">car</a>
-    <a href="/tenant">tenant</a>
-    <a href="/body-type">body-type</a>
-    <a href="/brand-car">brand-car</a>
-    <a href="/city-car">city-car</a>
-    <a href="/class-car">class-car</a>
-    <a href="/transmission">transmission</a>
-    <a href="/data">data</a>
-</div>
+<header>
+    <div class="wrap-logo">
+        <a href="/" class="logo">Автопрокат</a>
+    </div>
+    <nav>
+        <a class="active" href="/">Главная</a>
+        <a href="/car">Автомобиль</a>
+        <a href="/tenant">Арендаторы</a>
+        <a href="/brand-car">Марки автомобилей (admin)</a>
+        <a href="/city-car">Редактор локаций (admin)</a>
+        <a href="/class-car">Редактор классов (admin)</a>
+        <a href="/data">Отчетность</a>
+    </nav>
+</header>
 <div align="center" class="red_border">
     <h2>Таблица всех аренд</h2>
     <table>
@@ -301,5 +346,88 @@
         </tbody>
     </table>
 </div>
+
+<div align="center" class="red_border">
+    <h2>Популярные автомобили</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>N</th>
+            <th>ID</th>
+            <th>Марка</th>
+            <th>Модель</th>
+            <th>Класс</th>
+            <th>Номер авто</th>
+            <th>Город</th>
+            <th>Кузов</th>
+            <th>Коробка передач</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car, iterStat : ${popularTopThreeCars}"
+            th:style="${iterStat.odd}? 'font-weight: bold;'" class="red_border">
+            <td th:text="${iterStat.index}+1"></td>
+            <td th:text="${car.id}"></td>
+            <td th:text="${car.brandCar.name}"></td>
+            <td th:text="${car.modelCar}"></td>
+            <td th:text="${car.classCar.name}"></td>
+            <td th:text="${car.numberCar}"></td>
+            <td th:text="${car.cityCar.name}"></td>
+            <td th:text="${car.bodyType.name}"></td>
+            <td th:text="${car.transmission.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<form action="/data/filter" method="get" style="display: flex;flex-direction: column;align-items: center;">
+    <h1>Выберите срок отчетности</h1>
+    <div>
+        <label style="text-align: right">С</label><input type="date" name="startDate">
+    </div>
+    <div align="center">
+        <label style="text-align: right"> по </label><input type="date" name="endDate">
+    </div>
+    <button type="submit">Показать отчет</button>
+    <button type="reset">Сбросить</button>
+</form>
+
+<div align="center" class="red_border" id="countCars" th:if="${countRental != null}">
+    <h2>Количество аренд у машин</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>N</th>
+            <th>ID</th>
+            <th>Марка</th>
+            <th>Модель</th>
+            <th>Класс</th>
+            <th>Номер авто</th>
+            <th>Город</th>
+            <th>Кузов</th>
+            <th>Коробка передач</th>
+            <th>Количество</th>
+            <th>Прибыль за период</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="car, iterStat : ${countRentalByDate}"
+                th:style="${iterStat.odd}? 'font-weight: bold;'" class="red_border">
+                <td th:text="${iterStat.index}+1"></td>
+                <td th:text="${car.idCar}"></td>
+                <td th:text="${car.brandCar}"></td>
+                <td th:text="${car.modelCar}"></td>
+                <td th:text="${car.classCar}"></td>
+                <td th:text="${car.numberCar}"></td>
+                <td th:text="${car.cityCar}"></td>
+                <td th:text="${car.bodyCar}"></td>
+                <td th:text="${car.transmissionCar}"></td>
+                <td th:text="${car.countRentalCar}"></td>
+                <td th:text="${car.profitCar}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
 </body>
 </html>

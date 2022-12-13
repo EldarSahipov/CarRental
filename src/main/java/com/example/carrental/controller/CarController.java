@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -94,8 +95,15 @@ public class CarController {
     }
 
     @GetMapping("/rental-car")
-    public String getFormRentingCarPage(@RequestParam Date startLease, @RequestParam Date endLease, Model model) {
-        if(startLease.getDate() < new Date().getDate() || endLease.before(startLease)) {
+    public String getFormRentingCarPage(@RequestParam(required = false) Date startLease, @RequestParam(required = false) Date endLease, Model model) {
+        if(startLease == null || endLease == null) {
+           return  "redirect:/car";
+        }
+        Date date = new Date();
+        date.setHours(startLease.getHours());
+        date.setMinutes(startLease.getMinutes());
+        date.setSeconds(startLease.getSeconds());
+        if(endLease.before(startLease) || startLease.before(date) || startLease.getDay() == date.getDay()) {
             return "redirect:/car";
         } else {
             model.addAttribute("cars", carService.getFreeCars(startLease, endLease));

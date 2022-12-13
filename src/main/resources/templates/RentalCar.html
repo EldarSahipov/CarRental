@@ -252,6 +252,48 @@
         margin: 0 0 0 8px;
         color: #efefef;
     }
+
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        background-color: #484848;
+        padding: 20px 10px;
+    }
+
+    .wrap-logo {
+        display: flex;
+        align-items: center;
+
+    }
+
+    header a {
+        color: #ffffff;
+        padding: 17px;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 4px;
+    }
+
+    header a.logo {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    header a:hover {
+        background-color: #c7ef5d;
+        color: #000000;
+    }
+
+    header a.active {
+        background-color: #C7EF5DFF;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+    }
 </style>
 <body>
 <div th:each="car, iterStat : ${cars}"
@@ -303,16 +345,20 @@
         </div>
     </div>
 </div>
-<div align="center">
-    <a href="/car">car</a>
-    <a href="/tenant">tenant</a>
-    <a href="/body-type">body-type</a>
-    <a href="/brand-car">brand-car</a>
-    <a href="/city-car">city-car</a>
-    <a href="/class-car">class-car</a>
-    <a href="/transmission">transmission</a>
-    <a href="/data">data</a>
-</div>
+<header>
+    <div class="wrap-logo">
+        <a href="/" class="logo">Автопрокат</a>
+    </div>
+    <nav>
+        <a class="active" href="/">Главная</a>
+        <a href="/car">Автомобиль</a>
+        <a href="/tenant">Арендаторы</a>
+        <a href="/brand-car">Марки автомобилей (admin)</a>
+        <a href="/city-car">Редактор локаций (admin)</a>
+        <a href="/class-car">Редактор классов (admin)</a>
+        <a href="/data">Отчетность</a>
+    </nav>
+</header>
 <div align="center" style="display: flex; justify-content: space-evenly; align-items: stretch;">
     <form action="/car/rental-car/filter-values" method="GET">
         <div class="filter" style="display: inline-flex;flex-direction: column; flex-wrap: wrap;align-items: center;margin-bottom: 15px;">

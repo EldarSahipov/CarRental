@@ -1,7 +1,6 @@
 package com.example.carrental.repo;
 
 import com.example.carrental.entity.Car;
-import com.example.carrental.entity.dto.PopularAuto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -145,9 +144,59 @@ public interface CarRepository extends JpaRepository<Car, Long> {
                                         String nameBodyType);
 
     @Query(value = """
-            SELECT TOP(3) car_id, class_id, brand_id, number_car, c.price, city_id, body_type_id, transmission_id, model, COUNT(*) as 'CountRental' FROM rental_car
-            join car c on c.id = rental_car.car_id
-            group by car_id, class_id, brand_id, number_car, c.price, city_id, body_type_id, transmission_id, model
-            order by CountRental desc""", nativeQuery = true)
+            select dbo.car.id, dbo.car.class_id, dbo.car.brand_id, dbo.car.number_car, dbo.car.price, dbo.car.city_id,
+            dbo.car.body_type_id, dbo.car.transmission_id, dbo.car.model
+            from car
+            join dbo.rental_car rc on dbo.car.id = rc.car_id
+            group by dbo.car.id, dbo.car.class_id, dbo.car.brand_id, dbo.car.number_car, dbo.car.price, dbo.car.city_id,
+            dbo.car.body_type_id, dbo.car.transmission_id, dbo.car.model
+            order by count(*) desc""", nativeQuery = true)
     List<Car> getPopularCars();
+
+    @Query(value = """
+            select top(3) dbo.car.id, dbo.car.class_id, dbo.car.brand_id, dbo.car.number_car, dbo.car.price, dbo.car.city_id,
+            dbo.car.body_type_id, dbo.car.transmission_id, dbo.car.model
+            from car
+            join dbo.rental_car rc on dbo.car.id = rc.car_id
+            group by dbo.car.id, dbo.car.class_id, dbo.car.brand_id, dbo.car.number_car, dbo.car.price, dbo.car.city_id,
+            dbo.car.body_type_id, dbo.car.transmission_id, dbo.car.model
+            order by count(*) desc""", nativeQuery = true)
+    List<Car> getTopThreePopularCars();
+
+    @Query(value = """
+                    select count(*) as count
+                    from rental_car
+                    where start_lease between ?1 and ?2
+                    group by car_id
+                    order by count(*) desc""", nativeQuery = true)
+    List<Integer> getCountRentalCars(Date startDate, Date endDate);
+
+    @Query(value = """
+                    select count(*) as count
+                    from rental_car
+                    where start_lease between ?1 and ?2
+                    group by car_id
+                    order by count(*) desc""", nativeQuery = true)
+    List<Integer> getSumCars(Date startDate, Date endDate);
+
+    @Query(value = """
+            select dbo.car.id, dbo.car.class_id, dbo.car.brand_id, dbo.car.number_car, dbo.car.price, dbo.car.city_id,
+            dbo.car.body_type_id, dbo.car.transmission_id, dbo.car.model
+            from car
+            join dbo.rental_car rc on dbo.car.id = rc.car_id
+            where start_lease between ?1 and ?2
+            group by dbo.car.id, dbo.car.class_id, dbo.car.brand_id, dbo.car.number_car, dbo.car.price, dbo.car.city_id,
+            dbo.car.body_type_id, dbo.car.transmission_id, dbo.car.model
+            order by count(*) desc""", nativeQuery = true)
+    List<Car> getCountRentalCarsByDate(Date startDate, Date endDate);
+
+    @Query(value = """
+            select car.id from car
+            join rental_car rc on car.id = rc.car_id
+            group by car.id""", nativeQuery = true)
+    List<Car> getRentedCars();
+
+
+
+
 }

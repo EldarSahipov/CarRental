@@ -32,4 +32,14 @@ public interface RentalCarRepository extends JpaRepository<RentalCar, Long> {
     @Modifying
     @Query(value = "SELECT * FROM dbo.rental_car ORDER BY start_lease, end_lease", nativeQuery = true)
     List<RentalCar> getAll();
+
+    @Query(value = "select count(*) from rental_car where car_id = ?1 and start_lease between ?2 and ?3", nativeQuery = true)
+    Integer getCountRentalByCar(long idCar, Date startLease, Date endLease);
+
+    @Query(value = """
+                select sum(rental_car.price) from rental_car
+                join car c on c.id = rental_car.car_id
+                where car_id = ?1 and start_lease between ?2 and ?3""", nativeQuery = true)
+    Integer getProfitRentalCar(long idCar, Date startLease, Date endLease);
 }
+

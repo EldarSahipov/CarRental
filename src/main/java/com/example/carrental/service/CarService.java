@@ -1,12 +1,9 @@
 package com.example.carrental.service;
 
 import com.example.carrental.entity.Car;
-import com.example.carrental.entity.dto.PopularAuto;
 import com.example.carrental.repo.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
-
 import java.util.Date;
 import java.util.List;
 
@@ -68,5 +65,25 @@ public class CarService {
 
     public List<Car> getPopularCars() {
         return carRepository.getPopularCars();
+    }
+
+    public List<Car> getTopThreePopularCars() {
+        return carRepository.getTopThreePopularCars();
+    }
+
+    public List<Car> getCountRentalCarsByDate(Date startDate, Date endDate) {
+        return carRepository.getCountRentalCarsByDate(startDate, endDate);
+    }
+
+    public List<Integer> getCountRentalCars(Date startDate, Date endDate) {
+        return carRepository.getCountRentalCars(startDate, endDate);
+    }
+
+    public List<Integer> getSumCars(Date startDate, Date endDate) {
+        return carRepository.getSumCars(startDate, endDate);
+    }
+
+    public List<Car> getRentedCars() {
+        return carRepository.getRentedCars();
     }
 }
