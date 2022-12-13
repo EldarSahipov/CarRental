@@ -242,9 +242,11 @@
     <div align="center" class="red_border">
         <form action="/car/add" method="post" style="display: flex; flex-direction: column; align-items: flex-start;">
             <h3>Форма для добавления автомобиля</h3>
+            <div style="color: green" th:if="${addedCar == true}">Автомобиль добавлен</div>
+            <div style="color: red" th:if="${notAddedCar == true}">Введите корректные данные</div>
             <div>
                 <label>Введите номер автомобиля</label>
-                <input type="text" placeholder="X000XX 00XX" name="numberCar">
+                <input type="text" placeholder="X000XX000" name="numberCar">
             </div>
             <div>
                 <label>Введите цену за день</label>
@@ -321,7 +323,7 @@
             </div>
             <div>
                 <label>Введите номер автомобиля</label>
-                <input type="text" placeholder="X000XX 00XX" name="numberCar">
+                <input type="text" placeholder="X000XX000" name="numberCar">
             </div>
             <div>
                 <label>Введите цену за день</label>
