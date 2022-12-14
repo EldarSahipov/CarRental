@@ -388,6 +388,9 @@
     <div align="center" class="red_border">
         <form action="/tenant/add" method="post">
             <h3>Форма для добавления арендатора</h3>
+            <div style="color: green" th:if="${addedTenant == true}">Арендатор добавлен</div>
+            <div style="color: yellow" th:if="${numberAlready == true}">Такой номер уже есть</div>
+            <div style="color: red" th:if="${notAddedTenant == true}">Введите корректные данные</div>
             <div>
                 <label>Введите имя</label>
                 <input type="text" placeholder="Иван" name="firstName">
@@ -435,6 +438,8 @@
     <div align="center" class="red_border">
         <form action="/tenant/update" method="post">
             <h3>Форма для обновления информации об арендаторе</h3>
+            <div style="color: green" th:if="${updateTenant == true}">Арендатор добавлен</div>
+            <div style="color: red" th:if="${notUpdateTenant == true}">Введите корректные данные</div>
             <div>
                 <label>Выберите арендатора для обновления</label>
                 <select name="phoneNumber">

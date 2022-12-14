@@ -31,4 +31,8 @@ public class BrandCarService {
     public List<BrandCar> getAll() {
         return brandCarRepository.getAll();
     }
+
+    public BrandCar getBrandCarByName(String name) {
+        return brandCarRepository.getBrandCarByName(name);
+    }
 }

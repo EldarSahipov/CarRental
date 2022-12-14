@@ -31,6 +31,8 @@ public interface TenantRepository extends JpaRepository<Tenant, String> {
     @Query(value = "SELECT * FROM dbo.tenant", nativeQuery = true)
     List<Tenant> getAll();
 
-//    @Query(value = """""", nativeQuery = true)
-//    List<Tenant> getAllWithInfo();
+    @Query(value = """
+            select * from tenant
+            where phone_number = ?1""", nativeQuery = true)
+    Tenant getTenantByPhoneNumber(String phoneNumber);
 }

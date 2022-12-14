@@ -31,4 +31,8 @@ public class TenantService {
     public List<Tenant> getAll() {
         return tenantRepository.getAll();
     }
+
+    public Tenant getTenantByPhoneNumber(String phoneNumber) {
+        return tenantRepository.getTenantByPhoneNumber(phoneNumber);
+    }
 }

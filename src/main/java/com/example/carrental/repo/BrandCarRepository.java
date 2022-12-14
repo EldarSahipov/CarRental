@@ -1,5 +1,6 @@
 package com.example.carrental.repo;
 
+import com.example.carrental.entity.BodyType;
 import com.example.carrental.entity.BrandCar;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -30,4 +31,9 @@ public interface BrandCarRepository extends JpaRepository<BrandCar, Integer> {
     @Modifying
     @Query(value = "SELECT * FROM dbo.brand_car", nativeQuery = true)
     List<BrandCar> getAll();
+
+    @Query(value = """
+            select * from brand_car
+            where name = ?1""", nativeQuery = true)
+    BrandCar getBrandCarByName(String name);
 }
