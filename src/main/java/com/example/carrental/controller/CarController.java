@@ -110,9 +110,9 @@ public class CarController {
         Matcher matcher = pattern.matcher(numberCar);
         if (matcher.matches() && !(modelCar == null) && !(priceCar == null)) {
             carService.update(classId, brandId, numberCar, priceCar, cityId, bodyTypeId, transmissionId, idCar, modelCar);
-            model.addAttribute("addedCar", true);
+            model.addAttribute("updatedCar", true);
         } else {
-            model.addAttribute("notAddedCar", true);
+            model.addAttribute("notUpdatedCar", true);
         }
         return getResourcesForm(model);
     }

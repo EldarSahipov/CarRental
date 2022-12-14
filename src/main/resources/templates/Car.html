@@ -250,7 +250,7 @@
             </div>
             <div>
                 <label>Введите цену за день</label>
-                <input type="number" name="priceCar">
+                <input type="number" name="priceCar" min="500" step="1">
             </div>
             <div>
                 <label>Класс автомобиля</label>
@@ -312,6 +312,8 @@
     <div align="center" class="red_border">
         <form action="/car/update" method="post" style="display: flex; flex-direction: column; align-items: flex-start;">
             <h3>Форма для обновления автомобиля</h3>
+            <div style="color: green" th:if="${updatedCar == true}">Автомобиль добавлен</div>
+            <div style="color: red" th:if="${notUpdatedCar == true}">Введите корректные данные</div>
             <div>
                 <label>Выберите автомобиль для обновления</label>
                 <select name="idCar">
@@ -327,7 +329,7 @@
             </div>
             <div>
                 <label>Введите цену за день</label>
-                <input type="number" name="priceCar">
+                <input type="number" name="priceCar" min="500" step="1">
             </div>
             <div>
                 <label>Класс автомобиля</label>
@@ -410,7 +412,7 @@
             <form action="/car/rental-car" method="get" style="display: flex; flex-direction: column; align-items: flex-start;">
                 <h1>Выберите срок аренды</h1>
                 <div>
-                    <label style="text-align: right">С</label><input type="date" name="startLease">
+                    <label style="text-align: right">С</label><input type="date" name="startLease" required>
                 </div>
                 <div align="center">
                     <label style="text-align: right"> по </label><input type="date" name="endLease">
