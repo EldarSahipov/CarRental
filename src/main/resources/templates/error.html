@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" class="translated-ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<style>
+    html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+    article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+    ol,ul{list-style:none;margin:0px;padding:0px;}
+    blockquote,q{quotes:none;}
+    blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+    table{border-collapse:collapse;border-spacing:0;}
+    /* start editing from here */
+    a{text-decoration:none;}
+    .txt-rt{text-align:right;}/* text align right */
+    .txt-lt{text-align:left;}/* text align left */
+    .txt-center{text-align:center;}/* text align center */
+    .float-rt{float:right;}/* float right */
+    .float-lt{float:left;}/* float left */
+    .clear{clear:both;}/* clear float */
+    .pos-relative{position:relative;}/* Position Relative */
+    .pos-absolute{position:absolute;}/* Position Absolute */
+    .vertical-base{vertical-align:baseline;}/* vertical align baseline */
+    .vertical-top{vertical-align:top;}/* vertical align top */
+    nav.vertical ul li{display:block;}/* vertical menu */
+    nav.horizontal ul li{display: inline-block;}/* horizontal menu */
+    img{max-width:100%;}
+    /*-- //Reset-Code --*/
+
+    body{
+        font-family: 'Josefin Sans', sans-serif;
+        background:url('/bg.jpg') no-repeat 0px 0px;
+        background-size:cover;
+        background-attachment: fixed;
+        background-position: center;
+
+    }
+    .clear{
+        clear:both;
+    }
+
+    h1{
+        font-size:190px;
+        text-align:center;
+        margin-bottom:20px;
+        margin-top:0px;
+        color:#003b64;
+    }
+    p{
+        font-weight:600;
+        font-size: 20px;
+        text-align:center;
+        color:#003b64;
+        padding-top:10px;
+    }
+    .main {
+        width: 80%;
+        margin: 130px auto 0;
+    }
+    .image {
+        width: 30%;
+        float: left;
+        margin-top:40px;
+    }
+    .image img{
+        width:100%;
+    }
+    .text{
+        width: 70%;
+        float: left;
+    }
+    .text a{
+        color:#000;
+        text-decoration:undrline;
+    }
+    .text a:hover{
+        color:#003b64;
+        text-decoration:underline;
+    }
+    .footer{
+        margin-top:115px;
+    }
+    .footer p{
+        font-size:17px;
+        color:#003b64;
+        letter-spacing:1px;
+    }
+    .footer a{
+        color:black;
+        text-decoration:none;
+    }
+    .footer a:hover{
+        text-decoration:underline;
+        color:#00337f;
+    }
+
+    /*---- responsive-design -----*/
+
+    @media(max-width:1024px){
+        .image{
+            margin-top: 100px;
+        }
+        .main {
+            width: 85%;
+            margin: 70px auto 0;
+        }
+    }
+    @media(max-width:768px){
+        .main {
+            width: 85%;
+            margin: 150px auto 0;
+        }
+        .footer{
+            margin-top:215px;
+        }
+    }
+    @media(max-width:736px){
+        .main {
+            width: 85%;
+            margin: 20px auto 0;
+        }
+        .image{
+            margin-top:45px;
+            width: 20%;
+        }
+        h1 {
+            font-size:70px;
+            margin-bottom:0px;
+        }
+        .footer{
+            margin-top:35px;
+        }
+        .footer p{
+            font-size:16px;
+
+        }
+    }
+    @media(max-width:667px){
+        .main {
+            width: 85%;
+            margin: 10px auto 0;
+        }
+        h1 {
+            font-size:75px;
+        }
+        .text p{
+            font-size:17px;
+        }
+        .footer p{
+            font-size:15px;
+        }
+    }
+    @media(max-width:640px){
+        .main {
+            width: 85%;
+            margin: 30px auto 0;
+        }
+    }
+    @media(max-width:600px){
+        .main {
+            width: 85%;
+            margin: 40px auto 0;
+        }
+        .image{
+            margin-top:40px;
+        }
+        .text{
+            width:80%;
+        }
+        h1 {
+            font-size:75px;
+        }
+        p{
+            font-size:18px;
+        }
+        .footer{
+            margin-top:40px;
+        }
+        .footer p{
+            font-size:15px;
+        }
+    }
+    @media(max-width:568px){
+        .main {
+            width: 85%;
+            margin: 10px auto 0;
+        }
+        h1 {
+            font-size:50px;
+        }
+        p{
+            font-size:16px;
+        }
+        .footer p{
+            font-size:14px;
+            padding-top:0px;
+        }
+    }
+    @media(max-width:414px){
+        .main {
+            width: 85%;
+            margin: 60px auto 0;
+        }
+        .image{
+            margin-left: 115px;
+            width:35%;
+        }
+        .text{
+            width:100%;
+        }
+        h1{
+            font-size:85px;
+        }
+        .footer p{
+            font-size:14px;
+            padding-top:80px;
+        }
+    }
+    @media(max-width:384px){
+        .main {
+            width: 85%;
+            margin: 30px auto 0;
+        }
+        .image{
+            margin-left: 105px;
+        }
+        .text{
+            width:100%;
+        }
+        .footer p{
+            font-size:14px;
+            padding-top:70px;
+        }
+    }
+    @media(max-width:375px){
+        .main {
+            width: 85%;
+            margin: 30px auto 0;
+        }
+        .image{
+            margin-left: 105px;
+        }
+        .text{
+            width:100%;
+        }
+        .footer p{
+            font-size:14px;
+            padding-top:50px;
+        }
+    }
+    @media(max-width:320px){
+        .main {
+            width: 85%;
+            margin: 15px auto 0;
+        }
+        .image{
+            margin-left: 85px;
+        }
+        .text{
+            width:100%;
+        }
+        .footer p{
+            font-size:14px;
+            padding-top:20px;
+        }
+    }
+
+    div.red_border{
+        border: 3px solid black;
+    }
+
+    td,tr {
+        padding: 3px;
+        border: 1px solid black;
+    }
+    * {box-sizing: border-box;}
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        background-color: #484848;
+        padding: 20px 10px;
+    }
+
+    .wrap-logo {
+        display: flex;
+        align-items: center;
+
+    }
+
+    header a {
+        color: #ffffff;
+        padding: 17px;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 4px;
+    }
+
+    header a.logo {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    header a:hover {
+        background-color: #c7ef5d;
+        color: #000000;
+    }
+
+    header a.active {
+        background-color: #C7EF5DFF;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+    }
+</style>
+<body>
+<header>
+    <div class="wrap-logo">
+        <a href="/" class="logo">Автопрокат</a>
+    </div>
+    <nav>
+        <a class="active" href="/">Главная</a>
+        <a href="/car">Автомобиль</a>
+        <a href="/tenant">Арендаторы</a>
+        <a href="/brand-car">Марки автомобилей (admin)</a>
+        <a href="/city-car">Редактор локаций (admin)</a>
+        <a href="/data">Отчетность</a>
+        <a href="/success">Выход</a>
+    </nav>
+</header>
+<div class="main">
+    <div class="image">
+        <img src="/img.png">
+    </div>
+    <div class="text">
+        <h1>Упс...</h1>
+        <p>К сожалению, мы не смогли ответить на данный запрос.</p>
+        <p>Пожалуйста, вернитесь обратно или перейдите на <a href="/" style="color: red">главную</a>. Мы делаем все возможное, чтобы не было таких ситуаций</p>
+    </div>
+    <div class="clear"></div>
+</div>
+</body>
+</html>

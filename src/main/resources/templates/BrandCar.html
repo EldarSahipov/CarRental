@@ -1,67 +1,192 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <title>Rental car</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <style>
+        html, body {
+            min-height: 100%;
+        }
+        body, div, form, input, select, p {
+            padding: 0;
+            margin: 0;
+            outline: none;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 14px;
+            color: #666;
+        }
+        h1 {
+            margin: 0;
+            font-weight: 400;
+        }
+        h3 {
+            margin: 12px 0;
+            color: #8ebf42;
+        }
+        .main-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+        }
+        form {
+            width: 100%;
+            padding: 20px;
+        }
+        fieldset {
+            border: none;
+            border-top: 1px solid #8ebf42;
+        }
+        .account-details, .personal-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .account-details >div, .personal-details >div >div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .account-details >div, .personal-details >div, input, label {
+            width: 100%;
+        }
+        label {
+            padding: 0 5px;
+            text-align: right;
+            vertical-align: middle;
+        }
+        input {
+            padding: 5px;
+            vertical-align: middle;
+        }
+        .checkbox {
+            margin-bottom: 10px;
+        }
+        select, .children, .gender, .bdate-block {
+            width: calc(100% + 26px);
+            padding: 5px 0;
+        }
+        select {
+            background: transparent;
+        }
+        .gender input {
+            width: auto;
+        }
+        .gender label {
+            padding: 0 5px 0 0;
+        }
+        .bdate-block {
+            display: flex;
+            justify-content: space-between;
+        }
+        .birthdate select.day {
+            width: 35px;
+        }
+        .birthdate select.mounth {
+            width: calc(100% - 94px);
+        }
+        .birthdate input {
+            width: 38px;
+            vertical-align: unset;
+        }
+        .checkbox input, .children input {
+            width: auto;
+            margin: -2px 10px 0 0;
+        }
+        .checkbox a {
+            color: #8ebf42;
+        }
+        .checkbox a:hover {
+            color: #82b534;
+        }
+        button {
+            width: 100%;
+            padding: 10px 0;
+            margin: 10px auto;
+            border-radius: 5px;
+            border: none;
+            background: #8ebf42;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+        }
+        button:hover {
+            background: #82b534;
+        }
+        @media (min-width: 568px) {
+            .account-details >div, .personal-details >div {
+                width: 50%;
+            }
+            label {
+                width: 40%;
+            }
+            input {
+                width: 60%;
+            }
+            select, .children, .gender, .bdate-block {
+                width: calc(60% + 16px);
+            }
+        }
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background-color: #484848;
+            padding: 20px 10px;
+        }
+
+        .wrap-logo {
+            display: flex;
+            align-items: center;
+
+        }
+
+        header a {
+            color: #ffffff;
+            padding: 17px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 4px;
+        }
+
+        header a.logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        header a:hover {
+            background-color: #c7ef5d;
+            color: #000000;
+        }
+
+        header a.active {
+            background-color: #C7EF5DFF;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        TABLE {
+            border-collapse: collapse; /* Убираем двойные линии между ячейками */
+            width: 1000px; /* Ширина таблицы */
+        }
+        TH, TD {
+            border: 3px solid black; /* Параметры рамки */
+            text-align: center; /* Выравнивание по центру */
+            padding: 4px; /* Поля вокруг текста */
+        }
+        TH {
+            background: #82b534; /* Цвет фона ячейки */
+            height: 40px; /* Высота ячеек */
+            vertical-align: bottom; /* Выравнивание по нижнему краю */
+            padding: 0; /* Убираем поля вокруг текста */
+        }
+    </style>
 </head>
-<style>
-    div.red_border{
-        border: 3px solid black;
-    }
-
-    td,tr {
-        padding: 3px;
-        border: 1px solid black;
-    }
-    * {box-sizing: border-box;}
-
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
-
-    header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        background-color: #484848;
-        padding: 20px 10px;
-    }
-
-    .wrap-logo {
-        display: flex;
-        align-items: center;
-
-    }
-
-    header a {
-        color: #ffffff;
-        padding: 17px;
-        text-decoration: none;
-        font-size: 18px;
-        border-radius: 4px;
-    }
-
-    header a.logo {
-        font-size: 25px;
-        font-weight: bold;
-    }
-
-    header a:hover {
-        background-color: #c7ef5d;
-        color: #000000;
-    }
-
-    header a.active {
-        background-color: #C7EF5DFF;
-    }
-
-    nav {
-        display: flex;
-        align-items: center;
-    }
-</style>
 <body>
 <header>
     <div class="wrap-logo">
@@ -72,41 +197,47 @@
         <a href="/car">Автомобиль</a>
         <a href="/tenant">Арендаторы</a>
         <a href="/brand-car">Марки автомобилей (admin)</a>
-        <a href="/city-car">Редактор локаций (admin)</a>
-        <a href="/class-car">Редактор классов (admin)</a>
-        <a href="/data">Отчетность</a>
+        <a href="/city-car" >Редактор локаций (admin)</a>
+        <a href="/data" sec:authorize="hasAuthority('ROLE_ADMIN')">Отчетность</a>
+        <a href="/success">Выход</a>
     </nav>
 </header>
-<div align="center" class="red_border">
-    <h3>Форма для добавления бренда</h3>
-    <div style="color: green" th:if="${addedNameBrand == true}">Марка добавлена</div>
-    <div style="color: yellow" th:if="${alreadyNameBrand == true}">Такой марка уже есть</div>
-    <div style="color: red" th:if="${notValidNameBrand == true}">Введите корректные данные</div>
+<div class="main-block">
     <form method="post" action="/brand-car/add">
-        <p>Название бренда: <input type="text" name="nameBrandCar"/></p>
-        <p><input type="submit" value="Добавить"></p>
+        <h1>Марки авто</h1>
+        <fieldset>
+            <legend>
+                <h3>Добавление новой марки автомобиля</h3>
+            </legend>
+            <div class="account-details">
+                <div><label>Название бренда</label><input type="text"  name="nameBrandCar" required minlength="1" maxlength="24"><label><div style="color: green" th:if="${addedNameBrand == true}">Марка добавлена</div>
+                    <div style="color: yellow" th:if="${alreadyNameBrand == true}">Такая марка уже есть</div>
+                    <div style="color: red" th:if="${notValidNameBrand == true}">Введите корректные данные</div></label></div>
+            </div>
+        </fieldset>
+        <button type="submit">Добавить</input>
     </form>
-    <p></p>
 </div>
-<p></p>
-<p></p>
-<div align="center" class="red_border">
-    <h3>Форма для обновления бренда</h3>
-    <div style="color: green" th:if="${updatedNameBrand == true}">Марка добавлена</div>
-    <div style="color: red" th:if="${notUpdateNameBrand == true}">Введите корректные данные</div>
-    <form action="/brand-car/update" method="post" >
-        <select class="form-control" name="idBrandCar">
-            <option th:each="brand : ${brands}"
-                    th:value="${brand.id}"
-                    th:text="${brand.name}">
-            </option>
-        </select>
-        <p><input type="text" name="nameBrandCar"></p>
-        <button type="submit">Изменить</button>
+<div class="main-block">
+    <form method="post" action="/brand-car/update">
+        <fieldset>
+            <legend>
+                <h3>Обновление бренда</h3>
+            </legend>
+            <div class="account-details">
+                <div><label>Выберите марку</label><select class="form-control" name="idBrandCar">
+                    <option th:each="brand : ${brands}"
+                            th:value="${brand.id}"
+                            th:text="${brand.name}">
+                    </option>
+                </select></div>
+                <div><label>Название бренда</label><input type="text" name="nameBrandCar" required min="1" max="24"><label><div style="color: green" th:if="${updatedNameBrand == true}">Марка добавлена</div>
+                    <div style="color: red" th:if="${notUpdateNameBrand == true}">Введите корректные данные</div></label></div>
+            </div>
+        </fieldset>
+        <button type="submit">Обновить</button>
     </form>
-    <p></p>
 </div>
-<p></p>
 <div align="center">
     <h3>Все бренды</h3>
     <table>
@@ -127,3 +258,4 @@
 </div>
 </body>
 </html>
+

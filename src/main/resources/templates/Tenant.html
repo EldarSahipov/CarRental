@@ -102,7 +102,7 @@
         padding: 4px; /* Поля вокруг текста */
     }
     TH {
-        background: #fc0; /* Цвет фона ячейки */
+        background: #82b534; /* Цвет фона ячейки */
         height: 40px; /* Высота ячеек */
         vertical-align: bottom; /* Выравнивание по нижнему краю */
         padding: 0; /* Убираем поля вокруг текста */
@@ -171,15 +171,14 @@
         display: inline-block;
         width: auto;
         height: auto;
-        background-color: #3d6182;
+        background-color: #8dff00;
         background-repeat: repeat-x;
-        background-image: -khtml-gradient(linear, left top, left bottom, from(#8db7dd), to(#3d6182));
-        background-image: -moz-linear-gradient(top, #8db7dd, #3d6182);
-        background-image: -ms-linear-gradient(top, #8db7dd, #3d6182);
-        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #8db7dd), color-stop(100%, #3d6182));
-        background-image: -webkit-linear-gradient(top, #8db7dd, #3d6182);
-        background-image: -o-linear-gradient(top, #8db7dd, #3d6182);
-        background-image: linear-gradient(top, #8db7dd, #3d6182);
+        background-image: -moz-linear-gradient(top, #82b534, #8dff00);
+        background-image: -ms-linear-gradient(top, #82b534, #8dff00);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #82b534), color-stop(100%, #8dff00));
+        background-image: -webkit-linear-gradient(top, #82b534, #8dff00);
+        background-image: -o-linear-gradient(top, #82b534, #8dff00);
+        background-image: linear-gradient(top, #82b534, #8dff00);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8db7dd', endColorstr='#3d6182', GradientType=0);
         text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
         border: 1px solid #19252f;
@@ -380,8 +379,8 @@
         <a href="/tenant">Арендаторы</a>
         <a href="/brand-car">Марки автомобилей (admin)</a>
         <a href="/city-car">Редактор локаций (admin)</a>
-        <a href="/class-car">Редактор классов (admin)</a>
         <a href="/data">Отчетность</a>
+        <a href="/success">Выход</a>
     </nav>
 </header>
 <div style="display: flex;justify-content: space-evenly;align-items: center;">
@@ -393,19 +392,19 @@
             <div style="color: red" th:if="${notAddedTenant == true}">Введите корректные данные</div>
             <div>
                 <label>Введите имя</label>
-                <input type="text" placeholder="Иван" name="firstName">
+                <input type="text" placeholder="Иван" name="firstName" required>
             </div>
             <div>
                 <label>Введите фамилию</label>
-                <input type="text" placeholder="Иванов" name="lastName">
+                <input type="text" placeholder="Иванов" name="lastName" required>
             </div>
             <div>
                 <label>Введите номер телефона</label>
-                <input type="text" placeholder="+79999999999" name="phoneNumber">
+                <input type="text" placeholder="+79999999999" name="phoneNumber" required>
             </div>
             <div>
                 <label>Введите стаж вождения</label>
-                <input type="number" name="yearDriving">
+                <input type="number" name="yearDriving" required min="0" max="88">
             </div>
             <div>
                 <button type="submit">Добавить</button>
@@ -451,15 +450,15 @@
             </div>
             <div>
                 <label>Введите имя</label>
-                <input type="text" placeholder="Иван" name="firstName">
+                <input type="text" placeholder="Иван" name="firstName" required>
             </div>
             <div>
                 <label>Введите фамилию</label>
-                <input type="text" placeholder="Иванов" name="lastName">
+                <input type="text" placeholder="Иванов" name="lastName" required>
             </div>
             <div>
                 <label>Введите стаж вождения</label>
-                <input type="number" name="yearDriving">
+                <input type="number" name="yearDriving" required>
             </div>
             <div>
                 <button type="submit">Обновить</button>

@@ -1,7 +1,7 @@
 package com.example.carrental.service;
 
-import com.example.carrental.entity.User;
-import com.example.carrental.repo.UserRepository;
+import com.example.carrental.springsecurity.model.User;
+import com.example.carrental.springsecurity.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

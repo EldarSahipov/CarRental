@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/car/rental-car")
@@ -18,7 +20,7 @@ public class RentalCarController {
     private final RentalCarService rentalCarService;
     private final TenantService tenantService;
     private final CarService carService;
-
+    private static final Logger LOGGER = Logger.getLogger(RentalCarController.class.getName());
     @Autowired
     public RentalCarController(RentalCarService rentalCarService, TenantService tenantService, CarService carService) {
         this.rentalCarService = rentalCarService;
@@ -33,12 +35,14 @@ public class RentalCarController {
                                @RequestParam long idCar) {
         Car car = carService.getCarByIdCar(idCar);
         rentalCarService.add(phoneNumber, endLease, startLease, idCar, car.getPrice());
+        LOGGER.log(Level.INFO, "Добавлена аренда автомобиля - " + car);
         return "redirect:/car";
     }
 
     @PostMapping("/delete")
     public String deleteRentalCar(@RequestParam long idRentalCar) {
         rentalCarService.delete(idRentalCar);
+        LOGGER.log(Level.INFO, "Удаление аренды автомобиля - " + idRentalCar);
         return "redirect:/car";
     }
 
@@ -47,6 +51,7 @@ public class RentalCarController {
                                   @RequestParam Date endLease,
                                   @RequestParam Date startLease) {
         rentalCarService.update(idRentalCar, endLease, startLease, carService.getCarByIdRentalCar(idRentalCar).getPrice());
+        LOGGER.log(Level.INFO, "Обновлены данные об аренде (" + idRentalCar );
         return "redirect:/car";
     }
 

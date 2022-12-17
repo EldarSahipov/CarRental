@@ -1,4 +1,4 @@
-package com.example.carrental.entity;
+package com.example.carrental.springsecurity.model;
 
 import lombok.*;
 
@@ -22,4 +22,12 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "role")
+    private Role role;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
 }
