@@ -77,10 +77,6 @@
         .gender label {
             padding: 0 5px 0 0;
         }
-        .bdate-block {
-            display: flex;
-            justify-content: space-between;
-        }
         .birthdate select.day {
             width: 35px;
         }
@@ -193,7 +189,7 @@
         <a href="/" class="logo">Автопрокат</a>
     </div>
     <nav>
-        <a class="active" href="/">Главная</a>
+        <a href="/">Главная</a>
         <a href="/car">Автомобиль</a>
         <a href="/tenant">Арендаторы</a>
         <a href="/brand-car" th:if="${user == 'ADMIN'}">Марки автомобилей (admin)</a>
@@ -210,12 +206,14 @@
                 <h3>Добавление новой марки автомобиля</h3>
             </legend>
             <div class="account-details">
-                <div><label>Название бренда</label><input type="text"  name="nameBrandCar" required minlength="1" maxlength="24"><label><div style="color: green" th:if="${addedNameBrand == true}">Марка добавлена</div>
+                <div><label>Название бренда</label><label>
+                    <input type="text"  name="nameBrandCar" required minlength="1" maxlength="24">
+                </label><label><div style="color: green" th:if="${addedNameBrand == true}">Марка добавлена</div>
                     <div style="color: yellow" th:if="${alreadyNameBrand == true}">Такая марка уже есть</div>
                     <div style="color: red" th:if="${notValidNameBrand == true}">Введите корректные данные</div></label></div>
             </div>
         </fieldset>
-        <button type="submit">Добавить</input>
+        <button type="submit">Добавить</button>
     </form>
 </div>
 <div class="main-block">
@@ -225,13 +223,17 @@
                 <h3>Обновление бренда</h3>
             </legend>
             <div class="account-details">
-                <div><label>Выберите марку</label><select class="form-control" name="idBrandCar">
-                    <option th:each="brand : ${brands}"
-                            th:value="${brand.id}"
-                            th:text="${brand.name}">
-                    </option>
-                </select></div>
-                <div><label>Название бренда</label><input type="text" name="nameBrandCar" required min="1" max="24"><label><div style="color: green" th:if="${updatedNameBrand == true}">Марка добавлена</div>
+                <div><label>Выберите марку</label><label>
+                    <select class="form-control" name="idBrandCar">
+                        <option th:each="brand : ${brands}"
+                                th:value="${brand.id}"
+                                th:text="${brand.name}">
+                        </option>
+                    </select>
+                </label></div>
+                <div><label>Название бренда</label><label>
+                    <input type="text" name="nameBrandCar" required min="1" max="24">
+                </label><label><div style="color: green" th:if="${updatedNameBrand == true}">Марка обновлена</div>
                     <div style="color: red" th:if="${notUpdateNameBrand == true}">Введите корректные данные</div></label></div>
             </div>
         </fieldset>

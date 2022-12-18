@@ -2,7 +2,7 @@
 <html lang="en" class="translated-ltr">
 <head>
     <meta charset="UTF-8">
-    <title>Error</title>
+    <title>Выход</title>
 </head>
 <style>
     html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
@@ -278,12 +278,12 @@
     }
 
     header a:hover {
-        background-color: #c7ef5d;
+        background-color: #8ebf42;
         color: #000000;
     }
 
     header a.active {
-        background-color: #C7EF5DFF;
+        background-color: #8ebf42;
     }
 
     nav {
@@ -310,8 +310,8 @@
         letter-spacing: 1.3px;
         font-weight: 700;
         color: #313133;
-        background: #4FD1C5;
-        background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+        background: #8ebf42;
+        background: linear-gradient(90deg, rgb(142, 191, 66) 0%, rgb(229, 128, 13) 100%);
         border: none;
         border-radius: 1000px;
         box-shadow: 12px 12px 24px rgba(79,209,197,.64);
@@ -327,7 +327,7 @@
         border-radius: 1000px;
         min-width: calc(300px + 12px);
         min-height: calc(60px + 12px);
-        border: 6px solid #00FFCB;
+        border: 6px solid #8ebf42;
         box-shadow: 0 0 60px rgba(0,255,203,.64);
         position: absolute;
         top: 50%;
@@ -350,7 +350,7 @@
         content: '';
         width: 30px; height: 30px;
         border-radius: 100%;
-        border: 6px solid #00FFCB;
+        border: 6px solid #8ebf42;
         position: absolute;
         z-index: -1;
         top: 50%;
@@ -383,7 +383,7 @@
         <a href="/" class="logo">Автопрокат</a>
     </div>
     <nav>
-        <a class="active" href="/">Главная</a>
+        <a href="/">Главная</a>
         <a href="/car">Автомобиль</a>
         <a href="/tenant">Арендаторы</a>
         <a href="/brand-car" th:if="${user == 'ADMIN'}">Марки автомобилей (admin)</a>
