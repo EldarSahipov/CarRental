@@ -7848,3 +7848,38 @@ java.lang.NullPointerException: Cannot invoke "com.example.carrental.service.Use
 [2022-12-19T01:25:35.035Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
 [2022-12-19T01:25:35.035Z] [com.zaxxer.hikari.HikariDataSource] [SpringApplicationShutdownHook] [350] [INFO ] HikariPool-1 - Shutdown initiated...
 [2022-12-19T01:25:35.035Z] [com.zaxxer.hikari.HikariDataSource] [SpringApplicationShutdownHook] [352] [INFO ] HikariPool-1 - Shutdown completed.
+[2022-12-19T01:25:37.037Z] [org.hibernate.validator.internal.util.Version] [background-preinit] [21] [INFO ] HV000001: Hibernate Validator 6.2.4.Final
+[2022-12-19T01:25:37.037Z] [org.springframework.boot.StartupInfoLogger] [restartedMain] [55] [INFO ] Starting CarRentalApplication using Java 17.0.1 on LAPTOP-V5ICB925 with PID 23464 (C:\Users\homie\Desktop\CarRental\target\classes started by homie in C:\Users\homie\Desktop\CarRental)
+[2022-12-19T01:25:37.037Z] [org.springframework.boot.SpringApplication] [restartedMain] [634] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-12-19T01:25:37.037Z] [org.springframework.boot.logging.DeferredLog] [restartedMain] [255] [INFO ] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2022-12-19T01:25:37.037Z] [org.springframework.boot.logging.DeferredLog] [restartedMain] [255] [INFO ] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2022-12-19T01:25:38.038Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-12-19T01:25:38.038Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [201] [INFO ] Finished Spring Data repository scanning in 84 ms. Found 9 JPA repository interfaces.
+[2022-12-19T01:25:39.039Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [restartedMain] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-12-19T01:25:39.039Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing ProtocolHandler ["http-nio-8080"]
+[2022-12-19T01:25:39.039Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting service [Tomcat]
+[2022-12-19T01:25:39.039Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.65]
+[2022-12-19T01:25:39.039Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2022-12-19T01:25:39.039Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [restartedMain] [292] [INFO ] Root WebApplicationContext: initialization completed in 2075 ms
+[2022-12-19T01:25:40.040Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [110] [INFO ] HikariPool-1 - Starting...
+[2022-12-19T01:25:40.040Z] [com.zaxxer.hikari.pool.PoolBase] [restartedMain] [541] [INFO ] HikariPool-1 - Driver does not support get/set network timeout for connections. (null)
+[2022-12-19T01:25:40.040Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [123] [INFO ] HikariPool-1 - Start completed.
+[2022-12-19T01:25:40.040Z] [org.hibernate.jpa.internal.util.LogHelper] [restartedMain] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-12-19T01:25:40.040Z] [org.hibernate.Version] [restartedMain] [44] [INFO ] HHH000412: Hibernate ORM core version 5.6.10.Final
+[2022-12-19T01:25:40.040Z] [org.hibernate.annotations.common.reflection.java.JavaReflectionManager] [restartedMain] [56] [INFO ] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2022-12-19T01:25:40.040Z] [org.hibernate.dialect.Dialect] [restartedMain] [175] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.SQLServer2016Dialect
+[2022-12-19T01:25:41.041Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [restartedMain] [52] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-12-19T01:25:41.041Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [restartedMain] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-19T01:25:42.042Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [restartedMain] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-12-19T01:25:42.042Z] [org.springframework.security.web.DefaultSecurityFilterChain] [restartedMain] [55] [INFO ] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@179ba2db, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@11c2b19a, org.springframework.security.web.context.SecurityContextPersistenceFilter@480fa689, org.springframework.security.web.header.HeaderWriterFilter@3c85b510, org.springframework.security.web.authentication.logout.LogoutFilter@6569fa34, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@13698a4f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@31dcb05, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@702f2541, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@58109b4b, org.springframework.security.web.session.SessionManagementFilter@6f2da92b, org.springframework.security.web.access.ExceptionTranslationFilter@5cbbd71d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@acfdfc9]
+[2022-12-19T01:25:42.042Z] [org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] [restartedMain] [59] [INFO ] LiveReload server is running on port 35729
+[2022-12-19T01:25:42.042Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting ProtocolHandler ["http-nio-8080"]
+[2022-12-19T01:25:43.043Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [restartedMain] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path ''
+[2022-12-19T01:25:43.043Z] [org.springframework.boot.StartupInfoLogger] [restartedMain] [61] [INFO ] Started CarRentalApplication in 5.656 seconds (JVM running for 6.487)
+[2022-12-19T01:25:51.051Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-8080-exec-1] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2022-12-19T01:25:51.051Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2022-12-19T01:25:51.051Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [547] [INFO ] Completed initialization in 0 ms
+[2022-12-19T01:28:11.011Z] [com.example.carrental.controller.CarController] [http-nio-8080-exec-10] [50] [INFO ] Запрос страницы /car
+[2022-12-19T01:54:47.047Z] [com.example.carrental.controller.CarController] [http-nio-8080-exec-2] [50] [INFO ] Запрос страницы /car
+[2022-12-19T01:54:52.052Z] [com.example.carrental.controller.CarController] [http-nio-8080-exec-2] [50] [INFO ] Запрос страницы /car
+[2022-12-19T01:55:36.036Z] [com.example.carrental.controller.CarController] [http-nio-8080-exec-10] [50] [INFO ] Запрос страницы /car
