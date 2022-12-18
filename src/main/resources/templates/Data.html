@@ -382,16 +382,19 @@
 <form action="/data/filter" method="get" style="display: flex;flex-direction: column;align-items: center;">
     <h1>Выберите срок отчетности</h1>
     <div>
-        <label style="text-align: right">С</label><input type="date" name="startDate">
+        <label style="text-align: right">С</label><input type="date" name="startDate" required>
     </div>
     <div align="center">
-        <label style="text-align: right"> по </label><input type="date" name="endDate">
+        <label style="text-align: right"> по </label><input type="date" name="endDate" required>
     </div>
     <button type="submit">Показать отчет</button>
     <button type="reset">Сбросить</button>
 </form>
 
 <div align="center" class="red_border" id="countCars" th:if="${countRental != null}">
+    <h2>Доход за период: </h2>
+    <h2 th:text="${profit}  + ' рублей'" th:if="${profit != null}"></h2>
+    <h2 th:if="${profit == null}">0 рублей</h2>
     <h2>Количество аренд у машин</h2>
     <table>
         <thead>

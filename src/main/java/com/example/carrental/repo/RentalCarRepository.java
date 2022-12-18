@@ -41,5 +41,10 @@ public interface RentalCarRepository extends JpaRepository<RentalCar, Long> {
                 join car c on c.id = rental_car.car_id
                 where car_id = ?1 and start_lease between ?2 and ?3""", nativeQuery = true)
     Integer getProfitRentalCar(long idCar, Date startLease, Date endLease);
+
+    @Query(value = """
+                select sum(price) from rental_car
+                where start_lease between ?1 and ?2""", nativeQuery = true)
+    Integer getProfitForThePeriod(Date startLease, Date endLease);
 }
 

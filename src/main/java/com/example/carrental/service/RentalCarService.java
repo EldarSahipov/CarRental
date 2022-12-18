@@ -1,6 +1,5 @@
 package com.example.carrental.service;
 
-import com.example.carrental.entity.Car;
 import com.example.carrental.entity.RentalCar;
 import com.example.carrental.repo.RentalCarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +31,9 @@ public class RentalCarService {
 
     public List<RentalCar> getAll() {
         return rentalCarRepository.getAll();
+    }
+
+    public Integer getProfitForThePeriod(Date startLease, Date endLease) {
+        return rentalCarRepository.getProfitForThePeriod(startLease, endLease);
     }
 }

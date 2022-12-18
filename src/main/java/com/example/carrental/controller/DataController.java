@@ -62,6 +62,7 @@ public class DataController {
                 .getInfoRentalCarList(carDtoService
                         .getCarDtoFromCar(carService
                                 .getRentedCars()), startDate, endDate));
+        model.addAttribute("profit", rentalCarService.getProfitForThePeriod(startDate, endDate));
         return "Data";
     }
 

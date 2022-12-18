@@ -6190,3 +6190,556 @@ Caused by: java.lang.ClassNotFoundException: com.example.carrental.controller.Ca
 [2022-12-18T23:15:30.030Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [SpringApplicationShutdownHook] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
 [2022-12-18T23:15:30.030Z] [com.zaxxer.hikari.HikariDataSource] [SpringApplicationShutdownHook] [350] [INFO ] HikariPool-1 - Shutdown initiated...
 [2022-12-18T23:15:30.030Z] [com.zaxxer.hikari.HikariDataSource] [SpringApplicationShutdownHook] [352] [INFO ] HikariPool-1 - Shutdown completed.
+[2022-12-18T23:27:18.018Z] [org.springframework.boot.StartupInfoLogger] [restartedMain] [55] [INFO ] Starting CarRentalApplication using Java 17.0.1 on LAPTOP-V5ICB925 with PID 776 (C:\Users\homie\Desktop\CarRental\target\classes started by homie in C:\Users\homie\Desktop\CarRental)
+[2022-12-18T23:27:18.018Z] [org.springframework.boot.SpringApplication] [restartedMain] [634] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-12-18T23:27:18.018Z] [org.hibernate.validator.internal.util.Version] [background-preinit] [21] [INFO ] HV000001: Hibernate Validator 6.2.4.Final
+[2022-12-18T23:27:19.019Z] [org.springframework.boot.logging.DeferredLog] [restartedMain] [255] [INFO ] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2022-12-18T23:27:19.019Z] [org.springframework.boot.logging.DeferredLog] [restartedMain] [255] [INFO ] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2022-12-18T23:27:19.019Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-12-18T23:27:19.019Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [201] [INFO ] Finished Spring Data repository scanning in 73 ms. Found 9 JPA repository interfaces.
+[2022-12-18T23:27:20.020Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [restartedMain] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-12-18T23:27:20.020Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing ProtocolHandler ["http-nio-8080"]
+[2022-12-18T23:27:20.020Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting service [Tomcat]
+[2022-12-18T23:27:20.020Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.65]
+[2022-12-18T23:27:20.020Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2022-12-18T23:27:20.020Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [restartedMain] [292] [INFO ] Root WebApplicationContext: initialization completed in 1842 ms
+[2022-12-18T23:27:21.021Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [110] [INFO ] HikariPool-1 - Starting...
+[2022-12-18T23:27:21.021Z] [com.zaxxer.hikari.pool.PoolBase] [restartedMain] [541] [INFO ] HikariPool-1 - Driver does not support get/set network timeout for connections. (null)
+[2022-12-18T23:27:21.021Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [123] [INFO ] HikariPool-1 - Start completed.
+[2022-12-18T23:27:21.021Z] [org.hibernate.jpa.internal.util.LogHelper] [restartedMain] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-12-18T23:27:21.021Z] [org.hibernate.Version] [restartedMain] [44] [INFO ] HHH000412: Hibernate ORM core version 5.6.10.Final
+[2022-12-18T23:27:21.021Z] [org.hibernate.annotations.common.reflection.java.JavaReflectionManager] [restartedMain] [56] [INFO ] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2022-12-18T23:27:21.021Z] [org.hibernate.dialect.Dialect] [restartedMain] [175] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.SQLServer2016Dialect
+[2022-12-18T23:27:22.022Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [restartedMain] [52] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-12-18T23:27:22.022Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [restartedMain] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-18T23:27:23.023Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [restartedMain] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-12-18T23:27:23.023Z] [org.springframework.security.web.DefaultSecurityFilterChain] [restartedMain] [55] [INFO ] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@c302367, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@39fb8b2e, org.springframework.security.web.context.SecurityContextPersistenceFilter@23f6d71a, org.springframework.security.web.header.HeaderWriterFilter@3bb56429, org.springframework.security.web.authentication.logout.LogoutFilter@3c8a3714, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@21083c52, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@bccd04f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@43ad5a37, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@60235763, org.springframework.security.web.session.SessionManagementFilter@d032617, org.springframework.security.web.access.ExceptionTranslationFilter@4ae93a52, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@11c2b19a]
+[2022-12-18T23:27:24.024Z] [org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] [restartedMain] [59] [INFO ] LiveReload server is running on port 35729
+[2022-12-18T23:27:24.024Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting ProtocolHandler ["http-nio-8080"]
+[2022-12-18T23:27:24.024Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [restartedMain] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path ''
+[2022-12-18T23:27:24.024Z] [org.springframework.boot.StartupInfoLogger] [restartedMain] [61] [INFO ] Started CarRentalApplication in 5.626 seconds (JVM running for 6.456)
+[2022-12-18T23:27:24.024Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-8080-exec-1] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2022-12-18T23:27:24.024Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2022-12-18T23:27:24.024Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [547] [INFO ] Completed initialization in 1 ms
+[2022-12-19T00:10:19.019Z] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver] [http-nio-8080-exec-10] [208] [WARN ] Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: ""]
+[2022-12-19T00:10:29.029Z] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver] [http-nio-8080-exec-1] [208] [WARN ] Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: ""]
+[2022-12-19T00:11:04.004Z] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver] [http-nio-8080-exec-4] [208] [WARN ] Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: ""]
+[2022-12-19T00:12:25.025Z] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver] [http-nio-8080-exec-3] [208] [WARN ] Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: ""]
+[2022-12-19T00:12:32.032Z] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver] [http-nio-8080-exec-4] [208] [WARN ] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+[2022-12-19T00:15:23.023Z] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver] [http-nio-8080-exec-3] [208] [WARN ] Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: ""]
+[2022-12-19T00:16:37.037Z] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver] [http-nio-8080-exec-7] [208] [WARN ] Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: ""]
+[2022-12-19T00:20:18.018Z] [com.example.carrental.controller.CarController] [http-nio-8080-exec-8] [50] [INFO ] Запрос страницы /car
+[2022-12-19T00:22:23.023Z] [com.example.carrental.controller.CarController] [http-nio-8080-exec-10] [50] [INFO ] Запрос страницы /car
+[2022-12-19T00:22:36.036Z] [com.example.carrental.controller.CarController] [http-nio-8080-exec-4] [50] [INFO ] Запрос страницы /car
+[2022-12-19T00:24:14.014Z] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver] [http-nio-8080-exec-3] [208] [WARN ] Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'startDate' for method parameter type Date is present but converted to null]
+[2022-12-19T00:24:17.017Z] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver] [http-nio-8080-exec-6] [208] [WARN ] Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'startDate' for method parameter type Date is present but converted to null]
+[2022-12-19T00:31:32.032Z] [org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener] [File Watcher] [213] [INFO ] Restarting due to 2 class path changes (0 additions, 1 deletion, 1 modification)
+[2022-12-19T00:31:32.032Z] [org.apache.juli.logging.DirectJDKLog] [Thread-5] [173] [INFO ] Pausing ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:31:32.032Z] [org.apache.juli.logging.DirectJDKLog] [Thread-5] [173] [INFO ] Stopping service [Tomcat]
+[2022-12-19T00:31:32.032Z] [org.apache.juli.logging.DirectJDKLog] [Thread-5] [173] [INFO ] Destroying Spring FrameworkServlet 'dispatcherServlet'
+[2022-12-19T00:31:32.032Z] [org.apache.juli.logging.DirectJDKLog] [Thread-5] [173] [INFO ] Stopping ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:31:32.032Z] [org.apache.juli.logging.DirectJDKLog] [Thread-5] [173] [INFO ] Destroying ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:31:32.032Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [Thread-5] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-19T00:31:32.032Z] [com.zaxxer.hikari.HikariDataSource] [Thread-5] [350] [INFO ] HikariPool-1 - Shutdown initiated...
+[2022-12-19T00:31:32.032Z] [com.zaxxer.hikari.HikariDataSource] [Thread-5] [352] [INFO ] HikariPool-1 - Shutdown completed.
+[2022-12-19T00:31:32.032Z] [org.springframework.boot.StartupInfoLogger] [restartedMain] [55] [INFO ] Starting CarRentalApplication using Java 17.0.1 on LAPTOP-V5ICB925 with PID 776 (C:\Users\homie\Desktop\CarRental\target\classes started by homie in C:\Users\homie\Desktop\CarRental)
+[2022-12-19T00:31:32.032Z] [org.springframework.boot.SpringApplication] [restartedMain] [634] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-12-19T00:31:32.032Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-12-19T00:31:32.032Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [201] [INFO ] Finished Spring Data repository scanning in 59 ms. Found 9 JPA repository interfaces.
+[2022-12-19T00:31:33.033Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [restartedMain] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-12-19T00:31:33.033Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:31:33.033Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting service [Tomcat]
+[2022-12-19T00:31:33.033Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.65]
+[2022-12-19T00:31:33.033Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2022-12-19T00:31:33.033Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [restartedMain] [292] [INFO ] Root WebApplicationContext: initialization completed in 617 ms
+[2022-12-19T00:31:33.033Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [110] [INFO ] HikariPool-2 - Starting...
+[2022-12-19T00:31:33.033Z] [com.zaxxer.hikari.pool.PoolBase] [restartedMain] [541] [INFO ] HikariPool-2 - Driver does not support get/set network timeout for connections. (null)
+[2022-12-19T00:31:33.033Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [123] [INFO ] HikariPool-2 - Start completed.
+[2022-12-19T00:31:33.033Z] [org.hibernate.jpa.internal.util.LogHelper] [restartedMain] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-12-19T00:31:33.033Z] [org.hibernate.dialect.Dialect] [restartedMain] [175] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.SQLServer2016Dialect
+[2022-12-19T00:31:33.033Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [restartedMain] [52] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-12-19T00:31:33.033Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [restartedMain] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-19T00:31:33.033Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [restartedMain] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-12-19T00:31:33.033Z] [org.springframework.security.web.DefaultSecurityFilterChain] [restartedMain] [55] [INFO ] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@33df2b1e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@780e87c3, org.springframework.security.web.context.SecurityContextPersistenceFilter@77a3c8aa, org.springframework.security.web.header.HeaderWriterFilter@10c52c8e, org.springframework.security.web.authentication.logout.LogoutFilter@43bdaac4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@332f77f5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@48154c4c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@718db89c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5188f3b9, org.springframework.security.web.session.SessionManagementFilter@1878739e, org.springframework.security.web.access.ExceptionTranslationFilter@33d18b11, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5ccebc3f]
+[2022-12-19T00:31:33.033Z] [org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] [restartedMain] [59] [INFO ] LiveReload server is running on port 35729
+[2022-12-19T00:31:33.033Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:31:33.033Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [restartedMain] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path ''
+[2022-12-19T00:31:33.033Z] [org.springframework.boot.StartupInfoLogger] [restartedMain] [61] [INFO ] Started CarRentalApplication in 1.417 seconds (JVM running for 3856.101)
+[2022-12-19T00:31:33.033Z] [org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener] [restartedMain] [63] [INFO ] Condition evaluation unchanged
+[2022-12-19T00:31:35.035Z] [org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener] [File Watcher] [213] [INFO ] Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+[2022-12-19T00:31:35.035Z] [org.apache.juli.logging.DirectJDKLog] [Thread-7] [173] [INFO ] Pausing ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:31:35.035Z] [org.apache.juli.logging.DirectJDKLog] [Thread-7] [173] [INFO ] Stopping service [Tomcat]
+[2022-12-19T00:31:35.035Z] [org.apache.juli.logging.DirectJDKLog] [Thread-7] [173] [INFO ] Stopping ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:31:35.035Z] [org.apache.juli.logging.DirectJDKLog] [Thread-7] [173] [INFO ] Destroying ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:31:35.035Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [Thread-7] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-19T00:31:35.035Z] [com.zaxxer.hikari.HikariDataSource] [Thread-7] [350] [INFO ] HikariPool-2 - Shutdown initiated...
+[2022-12-19T00:31:35.035Z] [com.zaxxer.hikari.HikariDataSource] [Thread-7] [352] [INFO ] HikariPool-2 - Shutdown completed.
+[2022-12-19T00:31:35.035Z] [org.springframework.boot.StartupInfoLogger] [restartedMain] [55] [INFO ] Starting CarRentalApplication using Java 17.0.1 on LAPTOP-V5ICB925 with PID 776 (C:\Users\homie\Desktop\CarRental\target\classes started by homie in C:\Users\homie\Desktop\CarRental)
+[2022-12-19T00:31:35.035Z] [org.springframework.boot.SpringApplication] [restartedMain] [634] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-12-19T00:31:35.035Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-12-19T00:31:35.035Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [201] [INFO ] Finished Spring Data repository scanning in 34 ms. Found 9 JPA repository interfaces.
+[2022-12-19T00:31:35.035Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [restartedMain] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-12-19T00:31:35.035Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:31:35.035Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting service [Tomcat]
+[2022-12-19T00:31:35.035Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.65]
+[2022-12-19T00:31:35.035Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2022-12-19T00:31:35.035Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [restartedMain] [292] [INFO ] Root WebApplicationContext: initialization completed in 381 ms
+[2022-12-19T00:31:35.035Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [110] [INFO ] HikariPool-3 - Starting...
+[2022-12-19T00:31:35.035Z] [com.zaxxer.hikari.pool.PoolBase] [restartedMain] [541] [INFO ] HikariPool-3 - Driver does not support get/set network timeout for connections. (null)
+[2022-12-19T00:31:35.035Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [123] [INFO ] HikariPool-3 - Start completed.
+[2022-12-19T00:31:35.035Z] [org.hibernate.jpa.internal.util.LogHelper] [restartedMain] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-12-19T00:31:35.035Z] [org.hibernate.dialect.Dialect] [restartedMain] [175] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.SQLServer2016Dialect
+[2022-12-19T00:31:35.035Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [restartedMain] [52] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-12-19T00:31:35.035Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [restartedMain] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-19T00:31:36.036Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [restartedMain] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-12-19T00:31:36.036Z] [org.springframework.security.web.DefaultSecurityFilterChain] [restartedMain] [55] [INFO ] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@232302e0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@52940b15, org.springframework.security.web.context.SecurityContextPersistenceFilter@37406e4e, org.springframework.security.web.header.HeaderWriterFilter@4096caa3, org.springframework.security.web.authentication.logout.LogoutFilter@f253999, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6b6e27f5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@254d7921, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@53f86cf9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3582a960, org.springframework.security.web.session.SessionManagementFilter@2d08a77c, org.springframework.security.web.access.ExceptionTranslationFilter@682f5619, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@32baa97e]
+[2022-12-19T00:31:36.036Z] [org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] [restartedMain] [59] [INFO ] LiveReload server is running on port 35729
+[2022-12-19T00:31:36.036Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:31:36.036Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [restartedMain] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path ''
+[2022-12-19T00:31:36.036Z] [org.springframework.boot.StartupInfoLogger] [restartedMain] [61] [INFO ] Started CarRentalApplication in 0.953 seconds (JVM running for 3858.567)
+[2022-12-19T00:31:36.036Z] [org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener] [restartedMain] [63] [INFO ] Condition evaluation unchanged
+[2022-12-19T00:33:58.058Z] [org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener] [File Watcher] [213] [INFO ] Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+[2022-12-19T00:33:58.058Z] [org.apache.juli.logging.DirectJDKLog] [Thread-11] [173] [INFO ] Pausing ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:33:58.058Z] [org.apache.juli.logging.DirectJDKLog] [Thread-11] [173] [INFO ] Stopping service [Tomcat]
+[2022-12-19T00:33:58.058Z] [org.apache.juli.logging.DirectJDKLog] [Thread-11] [173] [INFO ] Stopping ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:33:58.058Z] [org.apache.juli.logging.DirectJDKLog] [Thread-11] [173] [INFO ] Destroying ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:33:58.058Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [Thread-11] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-19T00:33:58.058Z] [com.zaxxer.hikari.HikariDataSource] [Thread-11] [350] [INFO ] HikariPool-3 - Shutdown initiated...
+[2022-12-19T00:33:58.058Z] [com.zaxxer.hikari.HikariDataSource] [Thread-11] [352] [INFO ] HikariPool-3 - Shutdown completed.
+[2022-12-19T00:33:58.058Z] [org.springframework.boot.StartupInfoLogger] [restartedMain] [55] [INFO ] Starting CarRentalApplication using Java 17.0.1 on LAPTOP-V5ICB925 with PID 776 (C:\Users\homie\Desktop\CarRental\target\classes started by homie in C:\Users\homie\Desktop\CarRental)
+[2022-12-19T00:33:58.058Z] [org.springframework.boot.SpringApplication] [restartedMain] [634] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-12-19T00:33:59.059Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-12-19T00:33:59.059Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [201] [INFO ] Finished Spring Data repository scanning in 36 ms. Found 8 JPA repository interfaces.
+[2022-12-19T00:33:59.059Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [restartedMain] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-12-19T00:33:59.059Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:33:59.059Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting service [Tomcat]
+[2022-12-19T00:33:59.059Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.65]
+[2022-12-19T00:33:59.059Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2022-12-19T00:33:59.059Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [restartedMain] [292] [INFO ] Root WebApplicationContext: initialization completed in 510 ms
+[2022-12-19T00:33:59.059Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [110] [INFO ] HikariPool-4 - Starting...
+[2022-12-19T00:33:59.059Z] [com.zaxxer.hikari.pool.PoolBase] [restartedMain] [541] [INFO ] HikariPool-4 - Driver does not support get/set network timeout for connections. (null)
+[2022-12-19T00:33:59.059Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [123] [INFO ] HikariPool-4 - Start completed.
+[2022-12-19T00:33:59.059Z] [org.hibernate.jpa.internal.util.LogHelper] [restartedMain] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-12-19T00:33:59.059Z] [org.hibernate.dialect.Dialect] [restartedMain] [175] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.SQLServer2016Dialect
+[2022-12-19T00:33:59.059Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [restartedMain] [52] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-12-19T00:33:59.059Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [restartedMain] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-19T00:33:59.059Z] [org.springframework.context.support.AbstractApplicationContext] [restartedMain] [591] [WARN ] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'carController' defined in file [C:\Users\homie\Desktop\CarRental\target\classes\com\example\carrental\controller\CarController.class]: Unsatisfied dependency expressed through constructor parameter 6; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rentalCarService': Resolution of declared constructors on bean Class [com.example.carrental.service.RentalCarService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@1b42250f] failed; nested exception is java.lang.NoClassDefFoundError: com/example/carrental/repo/RentalCarRepository
+[2022-12-19T00:33:59.059Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [restartedMain] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-19T00:33:59.059Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [350] [INFO ] HikariPool-4 - Shutdown initiated...
+[2022-12-19T00:33:59.059Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [352] [INFO ] HikariPool-4 - Shutdown completed.
+[2022-12-19T00:33:59.059Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Stopping service [Tomcat]
+[2022-12-19T00:33:59.059Z] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener] [restartedMain] [136] [INFO ] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2022-12-19T00:33:59.059Z] [org.springframework.boot.SpringApplication] [restartedMain] [824] [ERROR] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'carController' defined in file [C:\Users\homie\Desktop\CarRental\target\classes\com\example\carrental\controller\CarController.class]: Unsatisfied dependency expressed through constructor parameter 6; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rentalCarService': Resolution of declared constructors on bean Class [com.example.carrental.service.RentalCarService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@1b42250f] failed; nested exception is java.lang.NoClassDefFoundError: com/example/carrental/repo/RentalCarRepository
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.example.carrental.CarRentalApplication.main(CarRentalApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rentalCarService': Resolution of declared constructors on bean Class [com.example.carrental.service.RentalCarService] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@1b42250f] failed; nested exception is java.lang.NoClassDefFoundError: com/example/carrental/repo/RentalCarRepository
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:309)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1302)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/example/carrental/repo/RentalCarRepository
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3373)
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2555)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:304)
+	... 37 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.example.carrental.repo.RentalCarRepository
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:467)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:145)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
+	... 41 common frames omitted
+[2022-12-19T00:35:21.021Z] [org.springframework.boot.StartupInfoLogger] [restartedMain] [55] [INFO ] Starting CarRentalApplication using Java 17.0.1 on LAPTOP-V5ICB925 with PID 776 (C:\Users\homie\Desktop\CarRental\target\classes started by homie in C:\Users\homie\Desktop\CarRental)
+[2022-12-19T00:35:21.021Z] [org.springframework.boot.SpringApplication] [restartedMain] [634] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-12-19T00:35:21.021Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-12-19T00:35:21.021Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [201] [INFO ] Finished Spring Data repository scanning in 42 ms. Found 9 JPA repository interfaces.
+[2022-12-19T00:35:21.021Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [restartedMain] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-12-19T00:35:21.021Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:35:21.021Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting service [Tomcat]
+[2022-12-19T00:35:21.021Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.65]
+[2022-12-19T00:35:21.021Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2022-12-19T00:35:21.021Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [restartedMain] [292] [INFO ] Root WebApplicationContext: initialization completed in 377 ms
+[2022-12-19T00:35:21.021Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [110] [INFO ] HikariPool-5 - Starting...
+[2022-12-19T00:35:21.021Z] [com.zaxxer.hikari.pool.PoolBase] [restartedMain] [541] [INFO ] HikariPool-5 - Driver does not support get/set network timeout for connections. (null)
+[2022-12-19T00:35:21.021Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [123] [INFO ] HikariPool-5 - Start completed.
+[2022-12-19T00:35:21.021Z] [org.hibernate.jpa.internal.util.LogHelper] [restartedMain] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-12-19T00:35:21.021Z] [org.hibernate.dialect.Dialect] [restartedMain] [175] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.SQLServer2016Dialect
+[2022-12-19T00:35:21.021Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [restartedMain] [52] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-12-19T00:35:21.021Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [restartedMain] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-19T00:35:22.022Z] [org.springframework.context.support.AbstractApplicationContext] [restartedMain] [591] [WARN ] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'carController' defined in file [C:\Users\homie\Desktop\CarRental\target\classes\com\example\carrental\controller\CarController.class]: Unsatisfied dependency expressed through constructor parameter 6; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'rentalCarService' defined in file [C:\Users\homie\Desktop\CarRental\target\classes\com\example\carrental\service\RentalCarService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rentalCarRepository' defined in com.example.carrental.repo.RentalCarRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date); Reason: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!
+[2022-12-19T00:35:22.022Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [restartedMain] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-19T00:35:22.022Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [350] [INFO ] HikariPool-5 - Shutdown initiated...
+[2022-12-19T00:35:22.022Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [352] [INFO ] HikariPool-5 - Shutdown completed.
+[2022-12-19T00:35:22.022Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Stopping service [Tomcat]
+[2022-12-19T00:35:22.022Z] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener] [restartedMain] [136] [INFO ] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2022-12-19T00:35:22.022Z] [org.springframework.boot.SpringApplication] [restartedMain] [824] [ERROR] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'carController' defined in file [C:\Users\homie\Desktop\CarRental\target\classes\com\example\carrental\controller\CarController.class]: Unsatisfied dependency expressed through constructor parameter 6; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'rentalCarService' defined in file [C:\Users\homie\Desktop\CarRental\target\classes\com\example\carrental\service\RentalCarService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rentalCarRepository' defined in com.example.carrental.repo.RentalCarRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date); Reason: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.example.carrental.CarRentalApplication.main(CarRentalApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'rentalCarService' defined in file [C:\Users\homie\Desktop\CarRental\target\classes\com\example\carrental\service\RentalCarService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rentalCarRepository' defined in com.example.carrental.repo.RentalCarRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date); Reason: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rentalCarRepository' defined in com.example.carrental.repo.RentalCarRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date); Reason: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 38 common frames omitted
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date); Reason: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!
+	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:107)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$mapMethodsToQuery$1(QueryExecutorMethodInterceptor.java:95)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
+	at java.base/java.util.Collections$UnmodifiableCollection$1.forEachRemaining(Collections.java:1061)
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1845)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:97)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:87)
+	at java.base/java.util.Optional.map(Optional.java:260)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:87)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:365)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:323)
+	at org.springframework.data.util.Lazy.getNullable(Lazy.java:231)
+	at org.springframework.data.util.Lazy.get(Lazy.java:115)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:329)
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:144)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 49 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!
+	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.validateQuery(SimpleJpaQuery.java:96)
+	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.<init>(SimpleJpaQuery.java:66)
+	at org.springframework.data.jpa.repository.query.JpaQueryFactory.fromMethodWithQueryString(JpaQueryFactory.java:51)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$DeclaredQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:169)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:253)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:93)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:103)
+	... 71 common frames omitted
+Caused by: java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: rental_car is not mapped [select sum(price) from rental_car
+where start_lease between ?1 and ?2]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:138)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:181)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:188)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:757)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:114)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:362)
+	at jdk.proxy8/jdk.proxy8.$Proxy183.createQuery(Unknown Source)
+	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.validateQuery(SimpleJpaQuery.java:90)
+	... 77 common frames omitted
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: rental_car is not mapped [select sum(price) from rental_car
+where start_lease between ?1 and ?2]
+	at org.hibernate.hql.internal.ast.QuerySyntaxException.generateQueryException(QuerySyntaxException.java:79)
+	at org.hibernate.QueryException.wrapWithQueryString(QueryException.java:103)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:220)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:144)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:113)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:73)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:162)
+	at org.hibernate.internal.AbstractSharedSessionContract.getQueryPlan(AbstractSharedSessionContract.java:636)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:748)
+	... 85 common frames omitted
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: rental_car is not mapped
+	at org.hibernate.hql.internal.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:170)
+	at org.hibernate.hql.internal.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:91)
+	at org.hibernate.hql.internal.ast.tree.FromClause.addFromElement(FromClause.java:77)
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:334)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3782)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:3671)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:746)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:602)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:339)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:287)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:276)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:192)
+	... 91 common frames omitted
+[2022-12-19T00:40:46.046Z] [org.hibernate.validator.internal.util.Version] [background-preinit] [21] [INFO ] HV000001: Hibernate Validator 6.2.4.Final
+[2022-12-19T00:40:46.046Z] [org.springframework.boot.StartupInfoLogger] [restartedMain] [55] [INFO ] Starting CarRentalApplication using Java 17.0.1 on LAPTOP-V5ICB925 with PID 7012 (C:\Users\homie\Desktop\CarRental\target\classes started by homie in C:\Users\homie\Desktop\CarRental)
+[2022-12-19T00:40:46.046Z] [org.springframework.boot.SpringApplication] [restartedMain] [634] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-12-19T00:40:46.046Z] [org.springframework.boot.logging.DeferredLog] [restartedMain] [255] [INFO ] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2022-12-19T00:40:46.046Z] [org.springframework.boot.logging.DeferredLog] [restartedMain] [255] [INFO ] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2022-12-19T00:40:46.046Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-12-19T00:40:47.047Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [201] [INFO ] Finished Spring Data repository scanning in 85 ms. Found 9 JPA repository interfaces.
+[2022-12-19T00:40:47.047Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [restartedMain] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-12-19T00:40:47.047Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:40:47.047Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting service [Tomcat]
+[2022-12-19T00:40:47.047Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.65]
+[2022-12-19T00:40:47.047Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2022-12-19T00:40:47.047Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [restartedMain] [292] [INFO ] Root WebApplicationContext: initialization completed in 1854 ms
+[2022-12-19T00:40:48.048Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [110] [INFO ] HikariPool-1 - Starting...
+[2022-12-19T00:40:48.048Z] [com.zaxxer.hikari.pool.PoolBase] [restartedMain] [541] [INFO ] HikariPool-1 - Driver does not support get/set network timeout for connections. (null)
+[2022-12-19T00:40:48.048Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [123] [INFO ] HikariPool-1 - Start completed.
+[2022-12-19T00:40:48.048Z] [org.hibernate.jpa.internal.util.LogHelper] [restartedMain] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-12-19T00:40:48.048Z] [org.hibernate.Version] [restartedMain] [44] [INFO ] HHH000412: Hibernate ORM core version 5.6.10.Final
+[2022-12-19T00:40:48.048Z] [org.hibernate.annotations.common.reflection.java.JavaReflectionManager] [restartedMain] [56] [INFO ] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2022-12-19T00:40:48.048Z] [org.hibernate.dialect.Dialect] [restartedMain] [175] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.SQLServer2016Dialect
+[2022-12-19T00:40:49.049Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [restartedMain] [52] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-12-19T00:40:49.049Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [restartedMain] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-19T00:40:50.050Z] [org.springframework.context.support.AbstractApplicationContext] [restartedMain] [591] [WARN ] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'carController' defined in file [C:\Users\homie\Desktop\CarRental\target\classes\com\example\carrental\controller\CarController.class]: Unsatisfied dependency expressed through constructor parameter 6; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'rentalCarService' defined in file [C:\Users\homie\Desktop\CarRental\target\classes\com\example\carrental\service\RentalCarService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rentalCarRepository' defined in com.example.carrental.repo.RentalCarRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date); Reason: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!
+[2022-12-19T00:40:50.050Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [restartedMain] [651] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-19T00:40:50.050Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [350] [INFO ] HikariPool-1 - Shutdown initiated...
+[2022-12-19T00:40:50.050Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [352] [INFO ] HikariPool-1 - Shutdown completed.
+[2022-12-19T00:40:50.050Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Stopping service [Tomcat]
+[2022-12-19T00:40:50.050Z] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener] [restartedMain] [136] [INFO ] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2022-12-19T00:40:50.050Z] [org.springframework.boot.SpringApplication] [restartedMain] [824] [ERROR] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'carController' defined in file [C:\Users\homie\Desktop\CarRental\target\classes\com\example\carrental\controller\CarController.class]: Unsatisfied dependency expressed through constructor parameter 6; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'rentalCarService' defined in file [C:\Users\homie\Desktop\CarRental\target\classes\com\example\carrental\service\RentalCarService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rentalCarRepository' defined in com.example.carrental.repo.RentalCarRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date); Reason: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.example.carrental.CarRentalApplication.main(CarRentalApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'rentalCarService' defined in file [C:\Users\homie\Desktop\CarRental\target\classes\com\example\carrental\service\RentalCarService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rentalCarRepository' defined in com.example.carrental.repo.RentalCarRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date); Reason: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'rentalCarRepository' defined in com.example.carrental.repo.RentalCarRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date); Reason: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 38 common frames omitted
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date); Reason: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!
+	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:107)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$mapMethodsToQuery$1(QueryExecutorMethodInterceptor.java:95)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
+	at java.base/java.util.Collections$UnmodifiableCollection$1.forEachRemaining(Collections.java:1061)
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1845)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:97)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:87)
+	at java.base/java.util.Optional.map(Optional.java:260)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:87)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:365)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:323)
+	at org.springframework.data.util.Lazy.getNullable(Lazy.java:231)
+	at org.springframework.data.util.Lazy.get(Lazy.java:115)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:329)
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:144)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 49 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.lang.Integer com.example.carrental.repo.RentalCarRepository.getProfitForThePeriod(java.util.Date,java.util.Date)!
+	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.validateQuery(SimpleJpaQuery.java:96)
+	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.<init>(SimpleJpaQuery.java:66)
+	at org.springframework.data.jpa.repository.query.JpaQueryFactory.fromMethodWithQueryString(JpaQueryFactory.java:51)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$DeclaredQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:169)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:253)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:93)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:103)
+	... 71 common frames omitted
+Caused by: java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: rental_car is not mapped [select sum(price) from rental_car
+where start_lease between ?1 and ?2]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:138)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:181)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:188)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:757)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:114)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:362)
+	at jdk.proxy3/jdk.proxy3.$Proxy117.createQuery(Unknown Source)
+	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.validateQuery(SimpleJpaQuery.java:90)
+	... 77 common frames omitted
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: rental_car is not mapped [select sum(price) from rental_car
+where start_lease between ?1 and ?2]
+	at org.hibernate.hql.internal.ast.QuerySyntaxException.generateQueryException(QuerySyntaxException.java:79)
+	at org.hibernate.QueryException.wrapWithQueryString(QueryException.java:103)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:220)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:144)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:113)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:73)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:162)
+	at org.hibernate.internal.AbstractSharedSessionContract.getQueryPlan(AbstractSharedSessionContract.java:636)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:748)
+	... 85 common frames omitted
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: rental_car is not mapped
+	at org.hibernate.hql.internal.ast.util.SessionFactoryHelper.requireClassPersister(SessionFactoryHelper.java:170)
+	at org.hibernate.hql.internal.ast.tree.FromElementFactory.addFromElement(FromElementFactory.java:91)
+	at org.hibernate.hql.internal.ast.tree.FromClause.addFromElement(FromClause.java:77)
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.createFromElement(HqlSqlWalker.java:334)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElement(HqlSqlBaseWalker.java:3782)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromElementList(HqlSqlBaseWalker.java:3671)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.fromClause(HqlSqlBaseWalker.java:746)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:602)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:339)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:287)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:276)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:192)
+	... 91 common frames omitted
+[2022-12-19T00:42:45.045Z] [org.hibernate.validator.internal.util.Version] [background-preinit] [21] [INFO ] HV000001: Hibernate Validator 6.2.4.Final
+[2022-12-19T00:42:45.045Z] [org.springframework.boot.StartupInfoLogger] [restartedMain] [55] [INFO ] Starting CarRentalApplication using Java 17.0.1 on LAPTOP-V5ICB925 with PID 19180 (C:\Users\homie\Desktop\CarRental\target\classes started by homie in C:\Users\homie\Desktop\CarRental)
+[2022-12-19T00:42:45.045Z] [org.springframework.boot.SpringApplication] [restartedMain] [634] [INFO ] No active profile set, falling back to 1 default profile: "default"
+[2022-12-19T00:42:45.045Z] [org.springframework.boot.logging.DeferredLog] [restartedMain] [255] [INFO ] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2022-12-19T00:42:45.045Z] [org.springframework.boot.logging.DeferredLog] [restartedMain] [255] [INFO ] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2022-12-19T00:42:46.046Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [132] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-12-19T00:42:46.046Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [restartedMain] [201] [INFO ] Finished Spring Data repository scanning in 109 ms. Found 9 JPA repository interfaces.
+[2022-12-19T00:42:47.047Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [restartedMain] [108] [INFO ] Tomcat initialized with port(s): 8080 (http)
+[2022-12-19T00:42:47.047Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:42:47.047Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting service [Tomcat]
+[2022-12-19T00:42:47.047Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.65]
+[2022-12-19T00:42:47.047Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2022-12-19T00:42:47.047Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [restartedMain] [292] [INFO ] Root WebApplicationContext: initialization completed in 2174 ms
+[2022-12-19T00:42:47.047Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [110] [INFO ] HikariPool-1 - Starting...
+[2022-12-19T00:42:47.047Z] [com.zaxxer.hikari.pool.PoolBase] [restartedMain] [541] [INFO ] HikariPool-1 - Driver does not support get/set network timeout for connections. (null)
+[2022-12-19T00:42:47.047Z] [com.zaxxer.hikari.HikariDataSource] [restartedMain] [123] [INFO ] HikariPool-1 - Start completed.
+[2022-12-19T00:42:48.048Z] [org.hibernate.jpa.internal.util.LogHelper] [restartedMain] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-12-19T00:42:48.048Z] [org.hibernate.Version] [restartedMain] [44] [INFO ] HHH000412: Hibernate ORM core version 5.6.10.Final
+[2022-12-19T00:42:48.048Z] [org.hibernate.annotations.common.reflection.java.JavaReflectionManager] [restartedMain] [56] [INFO ] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2022-12-19T00:42:48.048Z] [org.hibernate.dialect.Dialect] [restartedMain] [175] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.SQLServer2016Dialect
+[2022-12-19T00:42:49.049Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [restartedMain] [52] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-12-19T00:42:49.049Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [restartedMain] [437] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-12-19T00:42:50.050Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [restartedMain] [219] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-12-19T00:42:50.050Z] [org.springframework.security.web.DefaultSecurityFilterChain] [restartedMain] [55] [INFO ] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@360144a8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@22c6f2f4, org.springframework.security.web.context.SecurityContextPersistenceFilter@18747f8d, org.springframework.security.web.header.HeaderWriterFilter@4741529b, org.springframework.security.web.authentication.logout.LogoutFilter@6a5357a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@38865773, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1dc29735, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@10a7e080, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2317e5e0, org.springframework.security.web.session.SessionManagementFilter@2d24f8f3, org.springframework.security.web.access.ExceptionTranslationFilter@33608bb3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@34eb1125]
+[2022-12-19T00:42:51.051Z] [org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] [restartedMain] [59] [INFO ] LiveReload server is running on port 35729
+[2022-12-19T00:42:51.051Z] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting ProtocolHandler ["http-nio-8080"]
+[2022-12-19T00:42:51.051Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [restartedMain] [220] [INFO ] Tomcat started on port(s): 8080 (http) with context path ''
+[2022-12-19T00:42:51.051Z] [org.springframework.boot.StartupInfoLogger] [restartedMain] [61] [INFO ] Started CarRentalApplication in 6.172 seconds (JVM running for 7.087)
+[2022-12-19T00:42:56.056Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-8080-exec-1] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2022-12-19T00:42:56.056Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2022-12-19T00:42:56.056Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-8080-exec-1] [547] [INFO ] Completed initialization in 1 ms
