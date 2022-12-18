@@ -424,6 +424,7 @@
         <table>
             <thead>
             <tr>
+                <th>Выбор</th>
                 <th>Номер</th>
                 <th>ID</th>
                 <th>Марка</th>
@@ -440,6 +441,9 @@
             <tbody>
             <tr th:each="car, iterStat : ${cars}"
                 th:style="${iterStat.odd}? 'font-weight: bold;'" class="red_border">
+                <td><label>
+                    <button th:value="${car.id}"  th:text="Выбрать" th:id="${car.id}" onclick="getValueFromTableFreeCars(this.id)">Выбор</button>
+                </label></td>
                 <td th:text="${iterStat.index}+1"></td>
                 <td th:text="${car.id}"></td>
                 <td th:text="${car.brandCar.name}"></td>
@@ -459,19 +463,15 @@
 <div align="center" class="red_border">
     <form action="/car/rental-car/add" method="post">
         <div style="width: 400px;">
-            <label>Введите номер строки свободной машины</label>
-            <select name="idCar">
-                <option th:each="car, iterStat : ${cars}"
-                        th:value="${car.id}"
-                        th:text="${iterStat.count}">
-                </option>
-            </select>
+            <label>ID свободной машины</label>
+            <label for="idCar"></label><input id="idCar" name="idCar" readonly>
         </div>
         <div align="center">
             <h3>1. Кто арендует?</h3>
             <table>
                 <thead>
                 <tr>
+                    <th></th>
                     <th>№</th>
                     <th>Номер телефона</th>
                     <th>Имя</th>
@@ -482,6 +482,9 @@
                 <tbody>
                 <tr th:each="tenant, iterStat : ${tenants}"
                     th:style="${iterStat.odd}? 'font-weight: bold;'" class="red_border">
+                    <td><label>
+                        <button type="button" th:value="${tenant.phoneNumber}"  th:text="Выбрать" th:id="${tenant.phoneNumber}" onclick="getValueFromTableTenants(this.id)">Выбор</button>
+                    </label></td>
                     <td th:text="${iterStat.index}+1"></td>
                     <td th:text="${tenant.phoneNumber}"></td>
                     <td th:text="${tenant.firstName}"></td>
@@ -494,13 +497,8 @@
             <a href="/tenant">Если арендатор отсутсвтует в списке, то кликните на эту надпись</a>
         </div>
         <div style="width: 400px;">
-            <label>Введите номер с таблицы</label>
-            <select name="phoneNumber">
-                <option th:each="tenant, iterStat : ${tenants}"
-                        th:value="${tenant.phoneNumber}"
-                        th:text="${iterStat.count}">
-                </option>
-            </select>
+            <label>Номер арендатора с таблицы</label>
+            <label for="phoneNumber"></label><input id="phoneNumber" name="phoneNumber" readonly>
         </div>
         <div style="width: 400px;" align="center">
             <h3>Срок аренды</h3>
@@ -560,5 +558,18 @@
     <p></p>
 </div>
 <p></p>
+<script>
+    function getValueFromTableFreeCars(id) {
+        var id1 = document.getElementById(id)
+        var inputElem = document.getElementById('idCar')
+        inputElem.value = id1.value
+    }
+
+    function getValueFromTableTenants(id) {
+        var id2 = document.getElementById(id)
+        var inputElem = document.getElementById('phoneNumber')
+        inputElem.value = id2.value
+    }
+</script>
 </body>
 </html>
