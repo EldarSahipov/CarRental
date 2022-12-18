@@ -3,6 +3,7 @@ package com.example.carrental.springsecurity.security;
 import com.example.carrental.springsecurity.model.Status;
 import com.example.carrental.springsecurity.model.User;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,10 +13,10 @@ import java.util.List;
 public class SecurityUser implements UserDetails {
     private final String username;
     private final String password;
-    private final List<SimpleGrantedAuthority> authorities;
+    private final List<GrantedAuthority> authorities;
     private final boolean isActive;
 
-    public SecurityUser(String username, String password, List<SimpleGrantedAuthority> authorities, boolean isActive) {
+    public SecurityUser(String username, String password, List<GrantedAuthority> authorities, boolean isActive) {
         this.username = username;
         this.password = password;
         this.authorities = authorities;

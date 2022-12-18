@@ -2,7 +2,12 @@ package com.example.carrental.controller;
 
 import com.example.carrental.entity.Tenant;
 import com.example.carrental.service.TenantService;
+import com.example.carrental.service.UserService;
+import com.example.carrental.springsecurity.model.Role;
+import com.example.carrental.springsecurity.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -11,10 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import java.util.List;
-import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,23 +25,28 @@ import java.util.regex.Pattern;
 @RequestMapping("/tenant")
 public class TenantController {
     private final TenantService tenantService;
+    private final UserService userService;
 
     @Autowired
-    public TenantController(TenantService tenantService) {
+    public TenantController(TenantService tenantService, UserService userService) {
         this.tenantService = tenantService;
+        this.userService = userService;
     }
 
     @GetMapping()
-    public String getTenantPage(Model model) {
+    public String getTenantPage(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+        verificationUser(currentUser, model);
         model.addAttribute("tenants", tenantService.getAll());
         return "Tenant";
     }
 
     @PostMapping("/add")
-    public String addTenant(@RequestParam(required = false) String phoneNumber,
+    public String addTenant(@AuthenticationPrincipal UserDetails currentUser,
+                            @RequestParam(required = false) String phoneNumber,
                             @RequestParam(required = false) String firstName,
                             @RequestParam(required = false) String lastName,
                             @RequestParam(required = false) Short yearDriving, Model model) {
+        verificationUser(currentUser, model);
         if(yearDriving == null) {
             yearDriving = 0;
         }
@@ -78,16 +85,20 @@ public class TenantController {
     }
 
     @PostMapping("/delete")
-    public String deleteTenantByPhoneNumber(@RequestParam String phoneNumber) {
+    public String deleteTenantByPhoneNumber(@AuthenticationPrincipal UserDetails currentUser,
+                                            @RequestParam String phoneNumber, Model model) {
+        verificationUser(currentUser, model);
         tenantService.delete(phoneNumber);
-        return "redirect:/tenant";
+        return "Tenant";
     }
 
     @PostMapping("/update")
-    public String updateTenantByPhoneNumber(@RequestParam(required = false) String phoneNumber,
+    public String updateTenantByPhoneNumber(@AuthenticationPrincipal UserDetails currentUser,
+                                            @RequestParam(required = false) String phoneNumber,
                                             @RequestParam(required = false) String firstName,
                                             @RequestParam(required = false) String lastName,
                                             @RequestParam(required = false) Short yearDriving, Model model){
+        verificationUser(currentUser, model);
         if(yearDriving == null) {
             yearDriving = 0;
         }
@@ -117,5 +128,14 @@ public class TenantController {
         tenantService.update(firstName, lastName, yearDriving, phoneNumber);
         model.addAttribute("updateTenant", true);
         return "Tenant";
+    }
+
+    private void verificationUser(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+        User user = userService.findUserByEmail(currentUser.getUsername()).orElse(null);
+        if (user != null && user.getRole() == Role.ADMIN) {
+            model.addAttribute("user", "ADMIN");
+        } else {
+            model.addAttribute("user", "USER");
+        }
     }
 }

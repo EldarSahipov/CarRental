@@ -6,7 +6,12 @@ import com.example.carrental.repo.RentalCarRepository;
 import com.example.carrental.service.CarDtoService;
 import com.example.carrental.service.CarService;
 import com.example.carrental.service.RentalCarService;
+import com.example.carrental.service.UserService;
+import com.example.carrental.springsecurity.model.Role;
+import com.example.carrental.springsecurity.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,27 +29,30 @@ public class DataController {
     private final RentalCarRepository rentalCarRepository;
     private final CarRepository carRepository;
     private final CarDtoService carDtoService;
+    private final UserService userService;
 
     @Autowired
-    public DataController(RentalCarService rentalCarService, CarService carService, RentalCarRepository rentalCarRepository, CarRepository carRepository, CarDtoService carDtoService) {
+    public DataController(RentalCarService rentalCarService, CarService carService, RentalCarRepository rentalCarRepository, CarRepository carRepository, CarDtoService carDtoService, UserService userService) {
         this.rentalCarService = rentalCarService;
         this.carService = carService;
         this.rentalCarRepository = rentalCarRepository;
         this.carRepository = carRepository;
         this.carDtoService = carDtoService;
+        this.userService = userService;
     }
 
     @GetMapping()
-    public String getDataPage(Model model) {
+    public String getDataPage(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+        verificationUser(currentUser, model);
         model.addAttribute("rentalCars", rentalCarService.getAll());
         List<Car> cars = carService.getTopThreePopularCars();
         model.addAttribute("popularTopThreeCars", cars);
-
         return "Data";
     }
 
     @GetMapping("/filter")
-    public String getDateByFilterPage(Model model, @RequestParam Date startDate, @RequestParam Date endDate) {
+    public String getDateByFilterPage(@AuthenticationPrincipal UserDetails currentUser, Model model, @RequestParam Date startDate, @RequestParam Date endDate) {
+        verificationUser(currentUser, model);
         model.addAttribute("rentalCars", rentalCarService.getAll());
         model.addAttribute("popularTopThreeCars", carService.getTopThreePopularCars());
         model.addAttribute("popularCars", carService.getPopularCars());
@@ -55,5 +63,14 @@ public class DataController {
                         .getCarDtoFromCar(carService
                                 .getRentedCars()), startDate, endDate));
         return "Data";
+    }
+
+    private void verificationUser(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+        User user = userService.findUserByEmail(currentUser.getUsername()).orElse(null);
+        if (user != null && user.getRole() == Role.ADMIN) {
+            model.addAttribute("user", "ADMIN");
+        } else {
+            model.addAttribute("user", "USER");
+        }
     }
 }

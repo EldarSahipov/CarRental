@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <title>Домашная</title>
@@ -56,10 +57,14 @@
         <a class="active" href="/">Главная</a>
         <a href="/car">Автомобиль</a>
         <a href="/tenant">Арендаторы</a>
-        <a href="/brand-car" sec:authorize="hasAuthority('ADMIN')" >Марки автомобилей (admin)</a>
-        <a href="/city-car">Редактор локаций (admin)</a>
+        <a href="/brand-car" th:if="${user == 'ADMIN'}">Марки автомобилей (admin)</a>
+        <a href="/city-car" th:if="${user == 'ADMIN'}">Редактор локаций (admin)</a>
         <a href="/data">Отчетность</a>
     </nav>
 </header>
+
+<div sec:authorize="hasAuthority('ADMIN')">
+    ТОлько для Админа
+</div>
 </body>
 </html>

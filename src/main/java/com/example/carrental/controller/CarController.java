@@ -2,7 +2,11 @@ package com.example.carrental.controller;
 
 import com.example.carrental.entity.Car;
 import com.example.carrental.service.*;
+import com.example.carrental.springsecurity.model.Role;
+import com.example.carrental.springsecurity.model.User;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -36,20 +40,24 @@ public class CarController {
     private final TransmissionService transmissionService;
     private final RentalCarService rentalCarService;
     private final TenantService tenantService;
+    private final UserService userService;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private static final Logger LOGGER = Logger.getLogger(CarController.class.getName());
 
     @GetMapping()
-    public String getCarPage(Model model) {
+    public String getCarPage(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+        verificationUser(currentUser, model);
         LOGGER.log(Level.INFO, "Запрос страницы /car");
-        return getResourcesForm(model);
+        return getResourcesForm(currentUser, model);
     }
 
     @GetMapping("/rental-car/filter-values")
-    public String getCarsByFilter(@RequestParam Date startLease, @RequestParam Date endLease,
+    public String getCarsByFilter(@AuthenticationPrincipal UserDetails currentUser,
+                                  @RequestParam Date startLease, @RequestParam Date endLease,
                                   @RequestParam String nameClass, @RequestParam String nameTransmission,
                                   @RequestParam String nameBrandCar, @RequestParam String nameCity,
                                   @RequestParam String nameBodyType, @RequestParam String typeSort, Model model) {
+        verificationUser(currentUser, model);
         if (typeSort.equals("brandCarName")) {
             model.addAttribute("cars", carService.getCarsByFilterByNameBrand(startLease, endLease, nameClass, nameTransmission, nameBrandCar, nameCity, nameBodyType));
         }
@@ -59,10 +67,11 @@ public class CarController {
         if (typeSort.equals("priceDesc")) {
             model.addAttribute("cars", carService.getCarsByFilterByPriceDesc(startLease, endLease, nameClass, nameTransmission, nameBrandCar, nameCity, nameBodyType));
         }
-        return getResources(startLease, endLease, model);
+        return getResources(currentUser, startLease, endLease, model);
     }
 
-    private String getResources(@RequestParam Date startLease, @RequestParam Date endLease, Model model) {
+    private String getResources(@AuthenticationPrincipal UserDetails currentUser, @RequestParam Date startLease, @RequestParam Date endLease, Model model) {
+        verificationUser(currentUser, model);
         model.addAttribute("rentalCars", rentalCarService.getAll());
         model.addAttribute("tenants", tenantService.getAll());
         model.addAttribute("startLease", dateFormat.format(startLease));
@@ -76,9 +85,13 @@ public class CarController {
     }
 
     @PostMapping("/add")
-    public String addCar(@RequestParam short classId, @RequestParam int brandId, @RequestParam(required = false) String numberCar,
-                         @RequestParam(required = false) Integer priceCar, @RequestParam int cityId, @RequestParam short bodyTypeId,
+    public String addCar(@AuthenticationPrincipal UserDetails currentUser,
+                         @RequestParam short classId, @RequestParam int brandId,
+                         @RequestParam(required = false) String numberCar,
+                         @RequestParam(required = false) Integer priceCar,
+                         @RequestParam int cityId, @RequestParam short bodyTypeId,
                          @RequestParam short transmissionId, @RequestParam(required = false) String modelCar, Model model) {
+        verificationUser(currentUser, model);
         try {
             String regex = "^(([АВЕКМНОРСТУХ]\\d{3}(?<!000)[АВЕКМНОРСТУХ]{1,2})(\\d{2,3})|(\\d{4}(?<!0000)[АВЕКМНОРСТУХ]{2})(\\d{2})|(\\d{3}(?<!000)(C?D|[ТНМВКЕ])\\d{3}(?<!000))(\\d{2}(?<!00))|([ТСК][АВЕКМНОРСТУХ]{2}\\d{3}(?<!000))(\\d{2})|([АВЕКМНОРСТУХ]{2}\\d{3}(?<!000)[АВЕКМНОРСТУХ])(\\d{2})|([АВЕКМНОРСТУХ]\\d{4}(?<!0000))(\\d{2})|(\\d{3}(?<!000)[АВЕКМНОРСТУХ])(\\d{2})|(\\d{4}(?<!0000)[АВЕКМНОРСТУХ])(\\d{2})|([АВЕКМНОРСТУХ]{2}\\d{4}(?<!0000))(\\d{2})|([АВЕКМНОРСТУХ]{2}\\d{3}(?<!000))(\\d{2,3})|(^Т[АВЕКМНОРСТУХ]{2}\\d{3}(?<!000)\\d{2,3}))";
             Pattern pattern = Pattern.compile(regex);
@@ -90,14 +103,15 @@ public class CarController {
             } else {
                 model.addAttribute("notAddedCar", true);
             }
-            return getResourcesForm(model);
+            return getResourcesForm(currentUser, model);
         } catch (Exception exception) {
             return "error";
         }
 
     }
 
-    private String getResourcesForm(Model model) {
+    private String getResourcesForm(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+        verificationUser(currentUser, model);
         model.addAttribute("cars", carService.getAll());
         model.addAttribute("classes", classCarService.getAll());
         model.addAttribute("brands", brandCarService.getAll());
@@ -108,16 +122,22 @@ public class CarController {
     }
 
     @PostMapping("/delete")
-    public String deleteCar(@RequestParam long idCar) {
+    public String deleteCar(@AuthenticationPrincipal UserDetails currentUser,
+                            @RequestParam long idCar, Model model) {
+        verificationUser(currentUser, model);
         carService.delete(idCar);
         LOGGER.log(Level.INFO, "Удаление автомобиля " + idCar);
-        return "redirect:/car";
+        return "Car";
     }
 
     @PostMapping("/update")
-    public String updateCar(@RequestParam short classId, @RequestParam int brandId, @RequestParam(required = false) String numberCar,
-                            @RequestParam(required = false) Integer priceCar, @RequestParam int cityId, @RequestParam short bodyTypeId,
-                            @RequestParam short transmissionId, @RequestParam long idCar, @RequestParam(required = false) String modelCar, Model model) {
+    public String updateCar(@AuthenticationPrincipal UserDetails currentUser,
+                            @RequestParam short classId, @RequestParam int brandId,
+                            @RequestParam(required = false) String numberCar,
+                            @RequestParam(required = false) Integer priceCar, @RequestParam int cityId,
+                            @RequestParam short bodyTypeId, @RequestParam short transmissionId,
+                            @RequestParam long idCar, @RequestParam(required = false) String modelCar, Model model) {
+        verificationUser(currentUser, model);
         String regex = "^(([АВЕКМНОРСТУХ]\\d{3}(?<!000)[АВЕКМНОРСТУХ]{1,2})(\\d{2,3})|(\\d{4}(?<!0000)[АВЕКМНОРСТУХ]{2})(\\d{2})|(\\d{3}(?<!000)(C?D|[ТНМВКЕ])\\d{3}(?<!000))(\\d{2}(?<!00))|([ТСК][АВЕКМНОРСТУХ]{2}\\d{3}(?<!000))(\\d{2})|([АВЕКМНОРСТУХ]{2}\\d{3}(?<!000)[АВЕКМНОРСТУХ])(\\d{2})|([АВЕКМНОРСТУХ]\\d{4}(?<!0000))(\\d{2})|(\\d{3}(?<!000)[АВЕКМНОРСТУХ])(\\d{2})|(\\d{4}(?<!0000)[АВЕКМНОРСТУХ])(\\d{2})|([АВЕКМНОРСТУХ]{2}\\d{4}(?<!0000))(\\d{2})|([АВЕКМНОРСТУХ]{2}\\d{3}(?<!000))(\\d{2,3})|(^Т[АВЕКМНОРСТУХ]{2}\\d{3}(?<!000)\\d{2,3}))";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(numberCar);
@@ -128,25 +148,36 @@ public class CarController {
         } else {
             model.addAttribute("notUpdatedCar", true);
         }
-        return getResourcesForm(model);
+        return getResourcesForm(currentUser, model);
     }
 
     @GetMapping("/rental-car")
-    public String getFormRentingCarPage(@RequestParam(required = false) Date startLease, @RequestParam(required = false) Date endLease, Model model) {
+    public String getFormRentingCarPage(@AuthenticationPrincipal UserDetails currentUser,
+                                        @RequestParam(required = false) Date startLease, @RequestParam(required = false) Date endLease, Model model) {
+        verificationUser(currentUser, model);
         if(startLease == null || endLease == null) {
-           return  "redirect:/car";
+           return  "Car";
         }
         Date date = new Date();
         date.setHours(startLease.getHours());
         date.setMinutes(startLease.getMinutes());
         date.setSeconds(startLease.getSeconds());
         if(endLease.getYear() > date.getYear() + 1)
-            return "redirect:/car";
+            return "Car";
         if(endLease.before(startLease) || startLease.before(date) || startLease.getDay() == date.getDay()) {
-            return "redirect:/car";
+            return "Car";
         } else {
             model.addAttribute("cars", carService.getFreeCars(startLease, endLease));
-            return getResources(startLease, endLease, model);
+            return getResources(currentUser, startLease, endLease, model);
+        }
+    }
+
+    private void verificationUser(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+        User user = userService.findUserByEmail(currentUser.getUsername()).orElse(null);
+        if (user != null && user.getRole() == Role.ADMIN) {
+            model.addAttribute("user", "ADMIN");
+        } else {
+            model.addAttribute("user", "USER");
         }
     }
 }

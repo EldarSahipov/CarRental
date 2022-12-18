@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <title>Rental car</title>
@@ -233,8 +234,8 @@
         <a class="active" href="/">Главная</a>
         <a href="/car">Автомобиль</a>
         <a href="/tenant">Арендаторы</a>
-        <a href="/brand-car">Марки автомобилей (admin)</a>
-        <a href="/city-car">Редактор локаций (admin)</a>
+        <a href="/brand-car" th:if="${user == 'ADMIN'}">Марки автомобилей (admin)</a>
+        <a href="/city-car" th:if="${user == 'ADMIN'}">Редактор локаций (admin)</a>
         <a href="/data">Отчетность</a>
         <a href="/success">Выход</a>
     </nav>
