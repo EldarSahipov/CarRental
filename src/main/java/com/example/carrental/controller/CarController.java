@@ -105,6 +105,7 @@ public class CarController {
             }
             return getResourcesForm(currentUser, model);
         } catch (Exception exception) {
+            verificationUser(currentUser, model);
             return "error";
         }
 
@@ -125,9 +126,16 @@ public class CarController {
     public String deleteCar(@AuthenticationPrincipal UserDetails currentUser,
                             @RequestParam long idCar, Model model) {
         verificationUser(currentUser, model);
+        try {
+            Car car = carService.getRentedCar(idCar);
+        } catch (Exception ignore) {
+            LOGGER.log(Level.INFO, "Не удалось удалить авто (возможно машина в аренде) " + idCar);
+            model.addAttribute("rental", true);
+            return getResourcesForm(currentUser, model);
+        }
         carService.delete(idCar);
         LOGGER.log(Level.INFO, "Удаление автомобиля " + idCar);
-        return "Car";
+        return getResourcesForm(currentUser, model);
     }
 
     @PostMapping("/update")
@@ -163,9 +171,9 @@ public class CarController {
         date.setMinutes(startLease.getMinutes());
         date.setSeconds(startLease.getSeconds());
         if(endLease.getYear() > date.getYear() + 1)
-            return "Car";
+            return getResourcesForm(currentUser, model);;
         if(endLease.before(startLease) || startLease.before(date) || startLease.getDay() == date.getDay()) {
-            return "Car";
+            return getResourcesForm(currentUser, model);
         } else {
             model.addAttribute("cars", carService.getFreeCars(startLease, endLease));
             return getResources(currentUser, startLease, endLease, model);

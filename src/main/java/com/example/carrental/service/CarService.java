@@ -86,4 +86,8 @@ public class CarService {
     public List<Car> getRentedCars() {
         return carRepository.getRentedCars();
     }
+
+    public Car getRentedCar(Long idCar) {
+        return carRepository.getRentedCar(idCar);
+    }
 }

@@ -5,9 +5,24 @@
     <title>Rental car</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/fontawesome-5.5/css/all.min.css" />
+    <link rel="stylesheet" href="/slick/slick.css">
+    <link rel="stylesheet" href="/slick/slick-theme.css">
+    <link rel="stylesheet" href="/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/tooplate-infinite-loop.css" />
     <style>
+        body {
+            background: #c7b39b url(/img/infinite-loop-01.jpg); /* Цвет фона и путь к файлу */
+            color: #fff; /* Цвет текста */
+        }
         html, body {
             min-height: 100%;
+        }
+        table {
+            color: #ffffff;
         }
         body, div, form, input, select, p {
             padding: 0;
@@ -15,7 +30,7 @@
             outline: none;
             font-family: Roboto, Arial, sans-serif;
             font-size: 14px;
-            color: #666;
+            color: #ffffff;
         }
         h1 {
             margin: 0;
@@ -76,6 +91,10 @@
         }
         .gender label {
             padding: 0 5px 0 0;
+        }
+        .bdate-block {
+            display: flex;
+            justify-content: space-between;
         }
         .birthdate select.day {
             width: 35px;
@@ -168,10 +187,10 @@
         }
         TABLE {
             border-collapse: collapse; /* Убираем двойные линии между ячейками */
-            width: 1000px; /* Ширина таблицы */
+            width: 300px; /* Ширина таблицы */
         }
         TH, TD {
-            border: 3px solid black; /* Параметры рамки */
+            border: 3px solid #10f800; /* Параметры рамки */
             text-align: center; /* Выравнивание по центру */
             padding: 4px; /* Поля вокруг текста */
         }
@@ -189,11 +208,13 @@
         <a href="/" class="logo">Автопрокат</a>
     </div>
     <nav>
-        <a href="/">Главная</a>
+        <a class="active" href="/">Главная</a>
         <a href="/car">Автомобиль</a>
         <a href="/tenant">Арендаторы</a>
+        <a href="/support">Поддержка</a>
         <a href="/brand-car" th:if="${user == 'ADMIN'}">Марки автомобилей (admin)</a>
         <a href="/city-car" th:if="${user == 'ADMIN'}">Редактор локаций (admin)</a>
+        <a href="/support">Поддержка</a>
         <a href="/data">Отчетность</a>
         <a href="/success">Выход</a>
     </nav>
@@ -206,14 +227,12 @@
                 <h3>Добавление новой марки автомобиля</h3>
             </legend>
             <div class="account-details">
-                <div><label>Название бренда</label><label>
-                    <input type="text"  name="nameBrandCar" required minlength="1" maxlength="24">
-                </label><label><div style="color: green" th:if="${addedNameBrand == true}">Марка добавлена</div>
+                <div><label>Название бренда</label><input type="text"  name="nameBrandCar" required minlength="1" maxlength="24"><label><div style="color: green" th:if="${addedNameBrand == true}">Марка добавлена</div>
                     <div style="color: yellow" th:if="${alreadyNameBrand == true}">Такая марка уже есть</div>
                     <div style="color: red" th:if="${notValidNameBrand == true}">Введите корректные данные</div></label></div>
             </div>
         </fieldset>
-        <button type="submit">Добавить</button>
+        <button type="submit">Добавить</input>
     </form>
 </div>
 <div class="main-block">
@@ -223,17 +242,13 @@
                 <h3>Обновление бренда</h3>
             </legend>
             <div class="account-details">
-                <div><label>Выберите марку</label><label>
-                    <select class="form-control" name="idBrandCar">
-                        <option th:each="brand : ${brands}"
-                                th:value="${brand.id}"
-                                th:text="${brand.name}">
-                        </option>
-                    </select>
-                </label></div>
-                <div><label>Название бренда</label><label>
-                    <input type="text" name="nameBrandCar" required min="1" max="24">
-                </label><label><div style="color: green" th:if="${updatedNameBrand == true}">Марка обновлена</div>
+                <div><label>Выберите марку</label><select class="form-control" name="idBrandCar">
+                    <option th:each="brand : ${brands}"
+                            th:value="${brand.id}"
+                            th:text="${brand.name}">
+                    </option>
+                </select></div>
+                <div><label>Название бренда</label><input type="text" name="nameBrandCar" required min="1" max="24"><label><div style="color: green" th:if="${updatedNameBrand == true}">Марка добавлена</div>
                     <div style="color: red" th:if="${notUpdateNameBrand == true}">Введите корректные данные</div></label></div>
             </div>
         </fieldset>
@@ -258,6 +273,197 @@
         </tbody>
     </table>
 </div>
+<script src="/js/jquery-1.9.1.min.js"></script>
+<script src="/slick/slick.min.js"></script>
+<script src="/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/js/easing.min.js"></script>
+<script src="/js/jquery.singlePageNav.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script>
+
+    function getOffSet(){
+        var _offset = 450;
+        var windowHeight = window.innerHeight;
+
+        if(windowHeight > 500) {
+            _offset = 400;
+        }
+        if(windowHeight > 680) {
+            _offset = 300
+        }
+        if(windowHeight > 830) {
+            _offset = 210;
+        }
+
+        return _offset;
+    }
+
+    function setParallaxPosition($doc, multiplier, $object){
+        var offset = getOffSet();
+        var from_top = $doc.scrollTop(),
+            bg_css = 'center ' +(multiplier * from_top - offset) + 'px';
+        $object.css({"background-position" : bg_css });
+    }
+
+    // Parallax function
+    // Adapted based on https://codepen.io/roborich/pen/wpAsm
+    var background_image_parallax = function($object, multiplier, forceSet){
+        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
+        multiplier = 1 - multiplier;
+        var $doc = $(document);
+        // $object.css({"background-attatchment" : "fixed"});
+
+        if(forceSet) {
+            setParallaxPosition($doc, multiplier, $object);
+        } else {
+            $(window).scroll(function(){
+                setParallaxPosition($doc, multiplier, $object);
+            });
+        }
+    };
+
+    var background_image_parallax_2 = function($object, multiplier){
+        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
+        multiplier = 1 - multiplier;
+        var $doc = $(document);
+        $object.css({"background-attachment" : "fixed"});
+
+        $(window).scroll(function(){
+            if($(window).width() > 768) {
+                var firstTop = $object.offset().top,
+                    pos = $(window).scrollTop(),
+                    yPos = Math.round((multiplier * (firstTop - pos)) - 186);
+
+                var bg_css = 'center ' + yPos + 'px';
+
+                $object.css({"background-position" : bg_css });
+            } else {
+                $object.css({"background-position" : "center" });
+            }
+        });
+    };
+
+    $(function(){
+        // Hero Section - Background Parallax
+        background_image_parallax($(".tm-parallax"), 0.30, false);
+        background_image_parallax_2($("#contact"), 0.80);
+        background_image_parallax_2($("#testimonials"), 0.80);
+
+        // Handle window resize
+        window.addEventListener('resize', function(){
+            background_image_parallax($(".tm-parallax"), 0.30, true);
+        }, true);
+
+        // Detect window scroll and update navbar
+        $(window).scroll(function(e){
+            if($(document).scrollTop() > 120) {
+                $('.tm-navbar').addClass("scroll");
+            } else {
+                $('.tm-navbar').removeClass("scroll");
+            }
+        });
+
+        // Close mobile menu after click
+        $('#tmNav a').on('click', function(){
+            $('.navbar-collapse').removeClass('show');
+        })
+
+        // Scroll to corresponding section with animation
+        $('#tmNav').singlePageNav({
+            'easing': 'easeInOutExpo',
+            'speed': 600
+        });
+
+        // Add smooth scrolling to all links
+        // https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
+        $("a").on('click', function(event) {
+            if (this.hash !== "") {
+                event.preventDefault();
+                var hash = this.hash;
+
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 600, 'easeInOutExpo', function(){
+                    window.location.hash = hash;
+                });
+            } // End if
+        });
+
+        // Pop up
+        $('.tm-gallery').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+            gallery: { enabled: true }
+        });
+
+        $('.tm-testimonials-carousel').slick({
+            dots: true,
+            prevArrow: false,
+            nextArrow: false,
+            infinite: false,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+
+        // Gallery
+        $('.tm-gallery').slick({
+            dots: true,
+            infinite: false,
+            slidesToShow: 5,
+            slidesToScroll: 2,
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 991,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    });
+</script>
 </body>
 </html>
 

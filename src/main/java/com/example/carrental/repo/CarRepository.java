@@ -196,7 +196,9 @@ public interface CarRepository extends JpaRepository<Car, Long> {
             group by car.id""", nativeQuery = true)
     List<Car> getRentedCars();
 
-
-
-
+    @Query(value = """
+            select distinct car_id from car
+            join rental_car rc on car.id = rc.car_id
+            where car_id = ?1 group by car_id""", nativeQuery = true)
+    Car getRentedCar(Long idCar);
 }

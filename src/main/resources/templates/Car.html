@@ -7,14 +7,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <style>
+    body {
+        background: #c7b39b url(/img/infinite-loop-01.jpg); /* Цвет фона и путь к файлу */
+        color: #fff; /* Цвет текста */
+    }
     TABLE {
         border-collapse: collapse; /* Убираем двойные линии между ячейками */
         width: 1000px; /* Ширина таблицы */
     }
     TH, TD {
-        border: 3px solid black; /* Параметры рамки */
+        border: 3px solid #10f800; /* Параметры рамки */
         text-align: center; /* Выравнивание по центру */
         padding: 4px; /* Поля вокруг текста */
+        background: #3F3F3F;
     }
     TH {
         background: #82b534; /* Цвет фона ячейки */
@@ -236,6 +241,7 @@
         <a href="/tenant">Арендаторы</a>
         <a href="/brand-car" th:if="${user == 'ADMIN'}">Марки автомобилей (admin)</a>
         <a href="/city-car" th:if="${user == 'ADMIN'}">Редактор локаций (admin)</a>
+        <a href="/support">Поддержка</a>
         <a href="/data">Отчетность</a>
         <a href="/success">Выход</a>
     </nav>
@@ -394,6 +400,7 @@
         <div align="center" class="red_border">
             <form action="/car/delete" method="post" style="display: flex; flex-direction: column; align-items: flex-start;">
                 <h3>Форма для удаления автомобиля</h3>
+                <div th:if="${rental == true}" style="color: red">Машина уже в аренде</div>
                 <div>
                     <label>Выберите автомобиль для удаления</label>
                     <select name="idCar">

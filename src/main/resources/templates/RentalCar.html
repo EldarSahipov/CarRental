@@ -93,14 +93,20 @@
         color: white;
     }
 
+    body {
+        background: #c7b39b url(/img/infinite-loop-01.jpg); /* Цвет фона и путь к файлу */
+        color: #fff; /* Цвет текста */
+    }
     TABLE {
         border-collapse: collapse; /* Убираем двойные линии между ячейками */
         width: 1000px; /* Ширина таблицы */
+        color: #ffffff;
     }
     TH, TD {
-        border: 3px solid black; /* Параметры рамки */
+        border: 3px solid #10f800; /* Параметры рамки */
         text-align: center; /* Выравнивание по центру */
         padding: 4px; /* Поля вокруг текста */
+        background: #3F3F3F;
     }
     TH {
         background: #82b534; /* Цвет фона ячейки */
@@ -355,6 +361,7 @@
         <a href="/tenant">Арендаторы</a>
         <a href="/brand-car" th:if="${user == 'ADMIN'}">Марки автомобилей (admin)</a>
         <a href="/city-car" th:if="${user == 'ADMIN'}">Редактор локаций (admin)</a>
+        <a href="/support">Поддержка</a>
         <a href="/data">Отчетность</a>
         <a href="/success">Выход</a>
     </nav>
