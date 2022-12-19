@@ -3,7 +3,11 @@ package com.example.carrental.springsecurity.controller;
 import com.example.carrental.controller.CarController;
 import com.example.carrental.service.MailService;
 import com.example.carrental.service.UserService;
+import com.example.carrental.springsecurity.model.Role;
+import com.example.carrental.springsecurity.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,12 +39,14 @@ public class AuthController {
     }
 
     @GetMapping("/success")
-    public String getSuccessPage() {
+    public String getSuccessPage(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+        verificationUser(currentUser, model);
         return "success";
     }
 
     @GetMapping("/registration")
-    public String getRegPage() {
+    public String getRegPage(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+        verificationUser(currentUser, model);
         return "registration";
     }
 
@@ -67,6 +73,15 @@ public class AuthController {
             ignore.printStackTrace();
             LOGGER.log(Level.INFO, ignore.getMessage());
             return "error";
+        }
+    }
+
+    private void verificationUser(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+        User user = userService.findUserByEmail(currentUser.getUsername()).orElse(null);
+        if (user != null && user.getRole() == Role.ADMIN) {
+            model.addAttribute("user", "ADMIN");
+        } else {
+            model.addAttribute("user", "USER");
         }
     }
 

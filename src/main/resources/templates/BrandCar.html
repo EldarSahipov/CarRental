@@ -212,8 +212,9 @@
         <a href="/car">Автомобиль</a>
         <a href="/tenant">Арендаторы</a>
         <a href="/support">Поддержка</a>
-        <a href="/brand-car" th:if="${user == 'ADMIN'}">Марки автомобилей (admin)</a>
-        <a href="/city-car" th:if="${user == 'ADMIN'}">Редактор локаций (admin)</a>
+        <a href="/brand-car" th:if="${user == 'ADMIN'}">Марки автомобилей</a>
+        <a href="/city-car" th:if="${user == 'ADMIN'}">Редактор локаций</a>
+        <a href="/registration" th:if="${user == 'ADMIN'}">Cотрудники</a>
         <a href="/support">Поддержка</a>
         <a href="/data">Отчетность</a>
         <a href="/success">Выход</a>

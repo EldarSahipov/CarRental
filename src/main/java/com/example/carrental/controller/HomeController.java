@@ -23,6 +23,10 @@ public class HomeController {
 
     @GetMapping
     public String getHomePage(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+        if (currentUser == null) {
+            model.addAttribute("user", "USER");
+            return "home";
+        }
         verificationUser(currentUser, model);
         return "home";
     }
