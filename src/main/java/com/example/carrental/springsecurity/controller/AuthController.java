@@ -55,6 +55,11 @@ public class AuthController {
                           @RequestParam String pass,
                           @RequestParam String confirmPass, Model model) {
         try {
+            User user = userService.findUserByEmail(email).orElse(null);
+            if(user != null) {
+                model.addAttribute("isNotAddedUser", true);
+                return "registration";
+            }
             String regex = "^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\\-+)|([A-Za-z0-9]+\\.+)|([A-Za-z0-9]+\\++))*[A-Za-z0-9]+@((\\w+\\-+)|(\\w+\\.))*\\w{1,63}\\.[a-zA-Z]{2,6})$";
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(email);

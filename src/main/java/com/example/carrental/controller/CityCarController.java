@@ -55,6 +55,7 @@ public class CityCarController {
     }
 
     private void verificationUser(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+        model.addAttribute("cities", cityCarService.getAll());
         User user = userService.findUserByEmail(currentUser.getUsername()).orElse(null);
         if (user != null && user.getRole() == Role.ADMIN) {
             model.addAttribute("user", "ADMIN");

@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -46,6 +47,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .clearAuthentication(true)
                 .deleteCookies("JSESSIONID")
                 .logoutSuccessUrl("/login");
+
+        http
+                .headers()
+                .defaultsDisabled()
+                .cacheControl()
+                .and()
+                .contentSecurityPolicy("style-src 'self'; script-src 'self'; object-src 'self'")
+                .reportOnly()
+                .and()
+                .and()
+                .headers()
+                .frameOptions().sameOrigin()
+                .and()
+                .headers()
+                .httpStrictTransportSecurity()
+                .includeSubDomains(true)
+                .maxAgeInSeconds(31536000)
+                .and()
+                .and()
+                .headers()
+                .contentTypeOptions().disable()
+                .and()
+                .headers()
+                .xssProtection().disable();
+
     }
 
     @Override

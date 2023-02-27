@@ -111,6 +111,7 @@ public class CarController {
 
     }
 
+
     private String getResourcesForm(@AuthenticationPrincipal UserDetails currentUser, Model model) {
         verificationUser(currentUser, model);
         model.addAttribute("cars", carService.getAll());
@@ -171,7 +172,7 @@ public class CarController {
         date.setMinutes(startLease.getMinutes());
         date.setSeconds(startLease.getSeconds());
         if(endLease.getYear() > date.getYear() + 1)
-            return getResourcesForm(currentUser, model);;
+            return getResourcesForm(currentUser, model);
         if(endLease.before(startLease) || startLease.before(date) || startLease.getDay() == date.getDay()) {
             return getResourcesForm(currentUser, model);
         } else {

@@ -42,12 +42,11 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     @Transactional
     @Query(value = """
-            SELECT DISTINCT dbo.car.id, dbo.car.class_id, dbo.car.brand_id, dbo.car.number_car, dbo.car.price, dbo.car.city_id, dbo.car.body_type_id, dbo.car.transmission_id, dbo.car.model
-            FROM dbo.car
-             LEFT OUTER JOIN dbo.rental_car ON dbo.car.id = dbo.rental_car.car_id
-                WHERE (dbo.rental_car.car_id IS NULL)
-                    OR ((?1 > dbo.rental_car.end_lease) OR (?2 < dbo.rental_car.start_lease)
-                            AND ?1 > CONVERT(date, GETDATE()))""", nativeQuery = true)
+            select car.* from car
+            EXCEPT
+            select car.* from car
+            join rental_car rc on car.id = rc.car_id
+            where (?1 between start_lease and end_lease or ?2 between start_lease and end_lease or ?1 = start_lease or ?2 = end_lease)""", nativeQuery = true)
     List<Car> getFreeCars(Date startLease, Date endLease);
 
     @Transactional
